@@ -70,7 +70,7 @@ const ProductList = () => {
             <p className="text-sm text-white">{product.description}</p>
             <div className="mt-4 flex justify-between items-center">
               <p className="font-semibold   bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">${product.price.toFixed(2)}</p>
-              <button       className="px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+              <button       className="lg:text-lg px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
                 Compare
               </button>
             </div>
