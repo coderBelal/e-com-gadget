@@ -24,9 +24,9 @@ const BottomNav = () => {
     setActiveItem(activeItem === index ? null : index);
   };
 
-  // To detect screen size change
+
   const handleResize = () => {
-    if (window.innerWidth >= 1024) {  // lg screen or larger
+    if (window.innerWidth >= 1024) {  
       setIsMobileView(false);
       setShowMenu(false);  
     } else {
@@ -43,7 +43,7 @@ const BottomNav = () => {
   return (
     <div className="bg-black p-6">
       <div className="bg-black mx-auto max-w-7xl">
-        {/* Mobile & Tablet Screen */}
+      
         <div className="flex justify-between p-2 md:hidden">
           <button
             onClick={() => setShowMenu(!showMenu)}
