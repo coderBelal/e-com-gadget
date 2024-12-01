@@ -16,11 +16,11 @@ const Product = () => {
   ];
 
   return (
-    <div className="py-4 mt-10 mx-auto max-w-7xl">
+    <div className="py-4 p-2 lg:p-0 md:p-0 mt-10 mx-auto max-w-7xl">
       {/* Add some text above the grid */}
       <div className="mb-4 text-center">
-        <h2 className="text-4xl uppercase font-bold gradient-text">Featured Products</h2>
-        <p className="text-gray-300">Check out our exclusive products available for you.</p>
+        <h2 className="text-3xl uppercase font-bold gradient-text">Featured Products</h2>
+        <p className="text-gray-300 text-xs">Check out our exclusive products available for you.</p>
       </div>
 
       {/* Product grid */}
@@ -28,20 +28,20 @@ const Product = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="group flex flex-col items-center rounded-lg p-4 shadow-lg hover:shadow-xl hover:bg-gray-800"
+            className="group flex flex-col items-center rounded-lg p-4 shadow-lg bg-[#0F1012] hover:shadow-2xl hover:bg-gray-800 transition-all duration-300"
           >
             <div className="relative">
               <img
                 src={product.image}
                 alt={product.title}
-                className="object-cover w-full h-48 rounded-lg transition-transform duration-300 group-hover:scale-110"
+                className="object-cover w-full h-48 rounded-lg transition-transform duration-500 group-hover:scale-105"
                 style={{ backgroundColor: 'transparent' }}
               />
-              <div className="absolute top-2 right-2  gradient-bg p-2 rounded-full shadow-md">
+              <div className="absolute top-2 right-2 gradient-bg p-2 rounded-full shadow-md">
                 <FaShoppingCart className="text-white" size={20} />
               </div>
             </div>
-            <h3 className="mt-4 text-lg font-bold   gradient-text">
+            <h3 className="mt-4 text-lg font-bold gradient-text">
               {product.title}
             </h3>
             <p className="text-sm text-gray-400">{product.description}</p>

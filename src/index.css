@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body{
-    background-color:  #06080d;
+    background-color:    #06080D  ;
 }
 .gradient-bg {
     background: linear-gradient(
@@ -22,4 +22,30 @@ body{
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
   }
-  
+  /* Add the following CSS to your styles.css or in the global stylesheet */
+
+.marquee-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee div {
+  flex-shrink: 0;
+  padding-right: 20px; /* Space between items */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

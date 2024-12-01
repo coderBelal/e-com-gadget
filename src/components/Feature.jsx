@@ -35,7 +35,7 @@ const FeaturedCategories = () => {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center p-4 text-white   bg-slate-700 rounded-md shadow-sm hover:shadow-md"
+            className="flex flex-col items-center justify-center p-4 text-white   bg-[#0F1012] rounded-md shadow-sm hover:shadow-md"
           >
             {category.icon}
             <p className="mt-2 text-center text-sm font-medium      gradient-text">

@@ -49,7 +49,7 @@ const BottomNav = () => {
   }, []);    
 
   return (     
-    <div className={`fixed lg:top-14 top-16 left-0 w-full z-50 p-2 transition-all duration-300 ${         
+    <div className={`fixed lg:top-14 top-[71px] left-0 w-full z-50 p-2 transition-all duration-300 ${         
       isScrolled ? " bg-white bg-opacity-20 text-black lg:backdrop-blur-md shadow-md" : "gradient-bg"       
     }`} >       
       <div className="mx-auto max-w-7xl">         
