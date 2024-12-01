@@ -34,8 +34,8 @@ function Text() {
     
       <div className=" ">
         {sections.map((section, index) => (
-          <div key={index} className=" bg-black  p-6 rounded-lg  ">
-            <h2 className="text-xl   bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent font-semibold mb-4">{section.title}</h2>
+          <div key={index} className="    p-6 rounded-lg  ">
+            <h2 className="text-xl    gradient-text   font-semibold mb-4">{section.title}</h2>
             <p className="  text-white">{section.content}</p>
           </div>
         ))}

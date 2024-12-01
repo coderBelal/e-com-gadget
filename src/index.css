@@ -2,5 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 body{
-    background-color: black;
+    background-color:  #06080D;
 }
+.gradient-bg {
+    background: linear-gradient(
+      81.02deg,
+      #fa5560 -23.47%,
+      #b14bf4 45.52%,
+      #4d91ff 114.8%
+    );
+  }
+  .gradient-text {
+    background: linear-gradient(
+      81.02deg,
+      #fa5560 -23.47%,
+      #b14bf4 45.52%,
+      #4d91ff 114.8%
+    );
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;  
+  }
+  

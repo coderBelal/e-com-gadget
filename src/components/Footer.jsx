@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer className="mt-32  bg-black    py-10">
+    <footer className="mt-32      py-10">
       <div className="container mx-auto px-4">
         {/* Logo and Description */}
         <div className="md:flex justify-between mb-10">

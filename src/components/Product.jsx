@@ -18,9 +18,9 @@ const Product = () => {
   return (
     <div className="py-4 mt-10 mx-auto max-w-7xl">
       {/* Add some text above the grid */}
-      <div className="mb-4 text-center  ">
-        <h2  className=' text-4xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent'>Featured Products</h2>
-        <p className=" 0">Check out our exclusive products available for you.</p>
+      <div className="mb-4 text-center">
+        <h2 className="text-4xl uppercase font-bold gradient-text">Featured Products</h2>
+        <p className="text-gray-300">Check out our exclusive products available for you.</p>
       </div>
 
       {/* Product grid */}
@@ -28,24 +28,28 @@ const Product = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="flex flex-col items-center rounded-lg p-4 shadow-lg bg-black transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-gray-800"
+            className="group flex flex-col items-center rounded-lg p-4 shadow-lg hover:shadow-xl hover:bg-gray-800"
           >
-            <div className="relative group">
+            <div className="relative">
               <img
                 src={product.image}
                 alt={product.title}
                 className="object-cover w-full h-48 rounded-lg transition-transform duration-300 group-hover:scale-110"
                 style={{ backgroundColor: 'transparent' }}
               />
-              <div className="absolute top-2 right-2    bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600  p-2 rounded-full shadow-md">
-                <FaShoppingCart className=" text-white " size={20} />
+              <div className="absolute top-2 right-2  gradient-text p-2 rounded-full shadow-md">
+                <FaShoppingCart className="text-white" size={20} />
               </div>
             </div>
-            <h3 className="mt-4 text-lg font-bold  bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">{product.title}</h3>
-            <p className="text-sm    text-white">{product.description}</p>
+            <h3 className="mt-4 text-lg font-bold   gradient-text">
+              {product.title}
+            </h3>
+            <p className="text-sm text-gray-400">{product.description}</p>
             <div className="mt-4 flex justify-between items-center w-full">
-              <p className="font-semibold   text-white">${product.price.toFixed(2)}</p>
-              <button       className=" lg:text-xl px-2 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+              <p className="font-semibold text-white">${product.price.toFixed(2)}</p>
+              <button
+                className="px-4 py-2 gradient-bg text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
                 Compare
               </button>
             </div>

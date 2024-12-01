@@ -18,8 +18,8 @@ const ShopByBrands = () => {
   ];
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8 bg-black">
-      <h2 className="text-center text-3xl font-semibold mb-6 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent ">Shop By Brands</h2>
+    <div className="py-8 px-4 sm:px-6 lg:px-8  ">
+      <h2 className="text-center text-3xl  font-bold  gradient-text ">Shop By Brands</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-center items-center">
         {brands.map((brand, index) => (
           <div key={index} className="flex flex-col items-center ">
@@ -28,7 +28,7 @@ const ShopByBrands = () => {
               alt={brand.name}
               className="w-24 h-24 object-contain mb-4 text-white"
             />
-            <span className=" text-lg bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">{brand.name}</span>
+            <span className=" text-lg    text-white">{brand.name}</span>
           </div>
         ))}
       </div>
