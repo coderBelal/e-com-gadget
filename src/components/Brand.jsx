@@ -19,7 +19,7 @@ const ShopByBrands = () => {
   ];
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8">
+    <div className="py-8 px-4 sm:px-6 lg:px-8 mx-auto  max-w-7xl  ">
       <h2 className="text-center text-3xl font-bold gradient-text">Shop By Brands</h2>
 
       {/* Marquee Component */}
