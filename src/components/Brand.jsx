@@ -1,4 +1,4 @@
- 
+  
 
 const ShopByBrands = () => {
   const brands = [
@@ -21,8 +21,8 @@ const ShopByBrands = () => {
     <div className="py-8 px-4 sm:px-6 lg:px-8">
       <h2 className="text-center text-3xl font-bold gradient-text">Shop By Brands</h2>
       
-      <div className=" overflow-hidden">
-        <div className=" ">
+      <div className="marquee-container overflow-hidden">
+        <div className="marquee flex">
           {brands.map((brand, index) => (
             <div key={index} className="flex flex-col items-center mx-4">
               <img

@@ -24,7 +24,7 @@ body{
   }
  
 
-/* .marquee-container {
+.marquee-container {
   width: 100%;
   height: auto;
   position: relative;
@@ -48,4 +48,4 @@ body{
   100% {
     transform: translateX(-100%);
   }
-} */
+}
