@@ -37,7 +37,7 @@ const Product = () => {
                 className="object-cover w-full h-48 rounded-lg transition-transform duration-300 group-hover:scale-110"
                 style={{ backgroundColor: 'transparent' }}
               />
-              <div className="absolute top-2 right-2  gradient-text p-2 rounded-full shadow-md">
+              <div className="absolute top-2 right-2  gradient-bg p-2 rounded-full shadow-md">
                 <FaShoppingCart className="text-white" size={20} />
               </div>
             </div>
