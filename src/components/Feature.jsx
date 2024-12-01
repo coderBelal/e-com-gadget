@@ -31,7 +31,7 @@ const FeaturedCategories = () => {
       <p className="text-center mb-8  text-white">
         Get your desired product from featured category
       </p>
-      <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4">
         {categories.map((category, index) => (
           <div
             key={index}
