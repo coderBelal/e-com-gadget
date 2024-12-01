@@ -24,28 +24,4 @@ body{
   }
  
 
-.marquee-container {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.marquee {
-  display: flex;
-  animation: marquee 20s linear infinite;
-}
-
-.marquee div {
-  flex-shrink: 0;
-  padding-right: 20px; 
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
+ 
