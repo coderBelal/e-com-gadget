@@ -63,7 +63,7 @@ const BottomNav = () => {
           <div className="flex justify-between md:hidden">
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="bg-gray-800 text-white px-4 py-2 rounded-md"
+              className="bg-gray-800 text-white px-1 py-2 rounded-md"
             >
               <IoReorderThreeOutline size={20} className="text-white" />
             </button>

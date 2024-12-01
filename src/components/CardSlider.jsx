@@ -31,20 +31,20 @@ const ProductList = () => {
 
   return (
     <div className="py-4 mx-auto max-w-7xl">
-      <div className="relative mb-4 z-50">
+      <div className="relative mb-4  ">
         <button
           onClick={scrollLeft}
-          className="absolute left-8 top-44 transform -translate-y-1/2 p-2 rounded-full  gradient-bg    opacity-70     transition-all"
+          className="absolute z-50 left-8 top-44 transform -translate-y-1/2 p-2 rounded-full  gradient-bg    opacity-70     transition-all"
         >
-          <FaChevronLeft size={20} className="text-gray-700" />
+          <FaChevronLeft size={20} className="text-gray-700  " />
         </button>
-        <div className="mb-4 text-center">
+        <div className="mb-4 text-center  ">
         <h2 className="text-3xl uppercase font-bold gradient-text">Ready for Order</h2>
         <p className="text-gray-300 text-xs">Check out our exclusive products available for you.</p>
       </div>
         <button
           onClick={scrollRight}
-          className="absolute right-8 top-44 transform -translate-y-1/2 p-2 rounded-full  gradient-bg    opacity-70      transition-all"
+          className="absolute z-50 right-8 top-44 transform -translate-y-1/2 p-2 rounded-full  gradient-bg    opacity-70      transition-all"
         >
           <FaChevronRight size={20} className="text-gray-700" />
         </button>

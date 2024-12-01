@@ -25,7 +25,7 @@ const TopNavbar = () => {
               <input
                 type="text"
                 placeholder="Search Your Product"
-                className="flex-grow bg-transparent text-black outline-none pl-2"
+                className="  flex-grow bg-transparent text-black outline-none pl-2"
               />
             </div>
           </div>
