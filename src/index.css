@@ -22,9 +22,9 @@ body{
     -webkit-background-clip: text;  
     -webkit-text-fill-color: transparent;  
   }
-  /* Add the following CSS to your styles.css or in the global stylesheet */
+ 
 
-.marquee-container {
+/* .marquee-container {
   width: 100%;
   height: auto;
   position: relative;
@@ -38,7 +38,7 @@ body{
 
 .marquee div {
   flex-shrink: 0;
-  padding-right: 20px; /* Space between items */
+  padding-right: 20px; 
 }
 
 @keyframes marquee {
@@ -48,4 +48,4 @@ body{
   100% {
     transform: translateX(-100%);
   }
-}
+} */
