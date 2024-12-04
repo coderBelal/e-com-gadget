@@ -1,89 +1,102 @@
+
+
+
+
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+ 
 
 const ResponsiveSlider = () => {
-  const sliderSettings = {
+ 
+  var settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
   };
 
+
   return (
-    <div>
-      <div className="lg:mt-24 lg:top-0 max-w-7xl mx-auto p-8">
-        {/* Carousel Section */}
-        <div className="lg:flex lg:justify-between lg:items-center lg:gap-6">
-          {/* Main Carousel */}
-          <div className="mt-32 lg:mt-12 md:mt-16 h-64 sm:h-80 md:h-96 lg:h-[500px] lg:w-3/5">
-            <Slider {...sliderSettings}>
-              <div className="h-full flex justify-center items-center">
-                <img
-                  src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg"
-                  alt="Acer Aspire 3"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="h-full flex justify-center items-center">
-                <img
-                  src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg"
-                  alt="Galaxy Buds 3"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="h-full flex justify-center items-center">
-                <img
-                  src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg"
-                  alt="Apple Watch Series 10"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </Slider>
-          </div>
+<section className="w-[95%] lg:mt-24 lg:top-0 md:w-11/12 mx-auto py-5  md:h-[445px] overflow-hidden">
+{/* Main Container */}
+<div className="grid grid-cols-1 md:flex gap-2">
+  {/* Left banner */}
 
-          {/* Side Images for Large Screens */}
-          <div className="hidden lg:flex lg:flex-col lg:gap-4 lg:w-1/4">
-            <div className="flex justify-center items-center">
-              <img
-                src="https://i.postimg.cc/28nqp4pd/Galaxy-Buds-3-1431.jpg"
-                alt="Galaxy Buds 3"
-                className="w-full object-contain"
-              />
-            </div>
-            <div className="flex justify-center items-center">
-              <img
-                src="https://i.postimg.cc/L8Tn528n/Watch-Series-10-Nov-5395.jpg"
-                alt="Apple Watch"
-                className="w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
+  <Slider {...settings} className='md:w-8/12'>
+  <div className="relative">
+  <img
+src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg" // Replace with your image path
+alt="MacBook Promotion"
+style={{ height: "auto", width: "100%" }}
+className="md:h-[400px] w-full object-cover object-center"
+/>
 
-        {/* Additional Sections for Small and Medium Screens */}
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-8 lg:hidden">
-          <div className="flex justify-center items-center">
-            <img
-              src="https://i.postimg.cc/28nqp4pd/Galaxy-Buds-3-1431.jpg"
-              alt="Galaxy Buds 3"
-              className="w-full h-auto"
-            />
-          </div>
-          <div className="flex justify-center items-center">
-            <img
-              src="https://i.postimg.cc/L8Tn528n/Watch-Series-10-Nov-5395.jpg"
-              alt="Apple Watch"
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
+    
+    <div className="absolute inset-0 flex flex-col justify-center p-6 text-white">
+    
+    </div>
+  </div>
+  <div className="relative">
+  <img
+src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg" // Replace with your image path
+alt="MacBook Promotion"
+style={{ height: "auto", width: "100%" }}
+className="md:h-[400px] w-full object-cover object-center"
+/>
+
+    <div className="absolute inset-0 flex flex-col justify-center p-6 text-white">
+     
+    </div>
+  </div>
+  <div className="relative">
+  <img
+src="https://i.postimg.cc/L8RJmnRc/i-Phone-16-Series-4-2800.jpg" // Replace with your image path
+alt="MacBook Promotion"
+style={{ height: "auto", width: "100%" }}
+className="md:h-[400px] w-full object-cover object-center"
+/>
+
+    <div className="absolute inset-0 flex flex-col justify-center p-6 text-white">
+     
+    </div>
+  </div>
+  </Slider>
+  {/* Right-side banners */}
+  <div className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0 md:ml-12 ml-0 md:w-3/12 md:py-8 py-0">
+    {/* Top right banner */}
+    <div className="relative h-[100px] md:h-[196px]">
+    <img
+      src="https://i.postimg.cc/28nqp4pd/Galaxy-Buds-3-1431.jpg" // Replace with your image path
+      alt="MacBook Promotion"
+       className="h-[100px] md:h-[196px] w-full object-center object-cover"
+      
+    />
+      {/* <div className="absolute inset-0 flex items-center justify-center p-4 text-white">
+        <h2 className="text-2xl font-bold">Order Online Now!</h2>
+      </div> */}
+    </div>
+
+    {/* Bottom right banner */}
+    <div className="relative h-[100px] md:h-[196px]">
+    <img
+      src="https://i.postimg.cc/28nqp4pd/Galaxy-Buds-3-1431.jpg" // Replace with your image path
+      alt="MacBook Promotion"
+       className="h-[100px] md:h-[195px] w-full object-cover object-center"
+      
+    />
+      <div className="absolute inset-0 flex items-center justify-center p-4 text-white  bg-opacity-70 ">
+    
       </div>
     </div>
-  );
+  </div>
+</div>
+</section> 
+
+);
 };
 
 export default ResponsiveSlider;

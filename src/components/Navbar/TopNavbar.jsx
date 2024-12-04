@@ -3,7 +3,7 @@ import PhoneNav from "./PhoneNav";
 
 const TopNavbar = () => {
   return (
-    <div className="bg-[#9a3eaa]   fixed lg:-top-5 left-0 w-full z-50 md:p-7">
+    <div className="bg-[#10151F]   fixed lg:-top-5 left-0 w-full z-50 md:p-7">
       <div className="mx-auto max-w-7xl">
         <nav className="text-white flex flex-col md:flex-row items-center justify-between">
           {/* Logo */}

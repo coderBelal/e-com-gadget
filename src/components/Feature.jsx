@@ -35,10 +35,12 @@ const FeaturedCategories = () => {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center p-4 text-white   bg-[#0F1012] rounded-md shadow-sm hover:shadow-md"
+            className="flex flex-col items-center group justify-center border-[#1C212A] border shadow-sm  hover:shadow-md p-4 text-white hover:bg-[#111627] cursor-pointer  bg-[#0C111A] rounded-md "
           >
-            {category.icon}
-            <p className="mt-2 text-center text-sm font-medium      gradient-text">
+          <span className="transition-transform duration-300 ease-in-out group-hover:scale-125">
+          {category.icon}
+          </span>  
+            <p className="mt-2 text-center text-sm font-medium  transition-transform duration-300 ease-in-out group-hover:scale-105    gradient-text">
               {category.name}
             </p>
           </div>
