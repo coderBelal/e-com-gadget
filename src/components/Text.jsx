@@ -30,17 +30,22 @@ function Text() {
   ];
 
   return (
-    <div className="  text-gray-800 min-h-screen p-4 mx-auto max-w-7xl">
-    
-      <div className=" ">
-        {sections.map((section, index) => (
-          <div key={index} className="    p-6 rounded-lg  ">
-            <h2 className="text-xl    gradient-text   font-semibold mb-4">{section.title}</h2>
-            <p className="  text-white">{section.content}</p>
-          </div>
-        ))}
-      </div>
+    <div className="text-gray-800 min-h-screen p-4 mx-auto max-w-7xl">
+    <div>
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className="p-6 rounded-lg"
+          data-aos={index % 2 === 0 ? "zoom-in" : "zoom-out"}
+        >
+          <h2 className="text-xl gradient-text font-semibold mb-4">
+            {section.title}
+          </h2>
+          <p className="text-white">{section.content}</p>
+        </div>
+      ))}
     </div>
+  </div>
   );
 }
 

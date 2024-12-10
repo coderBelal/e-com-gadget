@@ -1,5 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
 
 const ShopByBrands = () => {
   const brands = [
@@ -37,7 +38,8 @@ const ShopByBrands = () => {
       </Marquee>
 
       <div className="text-center mt-6">
-        <button className="text-white hover:underline text-lg">All Brands &gt;</button>
+        <Link to="/all-brand" >      <button className="text-white hover:underline text-lg">All Brands &gt;</button></Link>
+  
       </div>
     </div>
   );
