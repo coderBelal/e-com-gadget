@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, RouterProvider } from "react-router-dom";
  
 import Home from './components/Home/Home';
 import TopNavbar from "./components/Navbar/TopNavbar";
@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import AllBrands from "./components/pages/AllBrands";
+import { router } from "./routes.jsx/routes";
  
 const App = () => {
  useEffect(() => {
@@ -25,22 +26,26 @@ const App = () => {
     });
   }, []);
   return (
-    <div className="  overflow-x-hidden">    <Router>
-    <TopNavbar/>
-    <BottomNav/>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/pre-order" element={<PreOrderForm />} />
-      <Route path="/products/:productId" element={<ProductDetail/>} />
-      <Route path="/products/:productId" element={<ProductDetailCard/>} />
-      <Route path="/cart" element={<ShoppingCart/>} />
-      <Route path="/checkout/:productId" element={<CheckoutPage/>} />
-    <Route path="/phones-tab" element={<PhoneTabs/>} />
-    <Route path="/offer-card" element={<OfferCards/>} />
-    <Route path="/all-brand" element={<AllBrands/>} />
-    </Routes>
-    <Footer/>
-  </Router></div>
+  //   <div className="  overflow-x-hidden">    <Router>
+  //   <TopNavbar/>
+  //   <BottomNav/>
+  //   <Routes>
+  //     <Route path="/" element={<Home />} />
+  //     <Route path="/pre-order" element={<PreOrderForm />} />
+  //     <Route path="/products/:productId" element={<ProductDetail/>} />
+  //     <Route path="/products/:productId" element={<ProductDetailCard/>} />
+  //     <Route path="/cart" element={<ShoppingCart/>} />
+  //     <Route path="/checkout/:productId" element={<CheckoutPage/>} />
+  //   <Route path="/phones-tab" element={<PhoneTabs/>} />
+  //   <Route path="/offer-card" element={<OfferCards/>} />
+  //   <Route path="/all-brand" element={<AllBrands/>} />
+  //   </Routes>
+  //   <Footer/>
+  // </Router></div>
+
+  <div>
+    <RouterProvider router={router} />
+  </div>
 
   );
 };
