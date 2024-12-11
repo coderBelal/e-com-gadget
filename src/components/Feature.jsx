@@ -5,22 +5,15 @@ import { Link } from "react-router-dom";
  
 
 const categories = [
-  { icon: <AiOutlineTablet size={30} />, name: "Phones & Tablets" ,link:'phones-tab' },
-  { icon: <AiOutlineLaptop size={30} />, name: "MacBook" ,link:'phones-tab'  },
-  { icon: <AiOutlineAudio size={30} />, name: "Hubs & Docks" ,link:'phones-tab'  },
-  { icon: <BsWatch size={30} />, name: "Smart Watch",link:'phones-tab'  },
-  { icon: <BsHeadphones size={30} />, name: "Overhead Headphones",link:'phones-tab'  },
-  { icon: <AiOutlineUsb size={30} />, name: "Power Adapter",link:'phones-tab'  },
+  { icon: <AiOutlineTablet size={30} />, name: "Phones & Tablets" ,link:'phone-tabs' },
+  { icon: <AiOutlineLaptop size={30} />, name: "MacBook" ,link:'mac-book'  },
+  { icon: <AiOutlineAudio size={30} />, name: "Hubs & Docks" ,link:'hub-docs'  },
+  { icon: <BsWatch size={30} />, name: "Smart Watch",link:'smart-watch'  },
+  { icon: <BsHeadphones size={30} />, name: "Overhead Headphones",link:'headphone'  },
+  { icon: <AiOutlineUsb size={30} />, name: "Power Adapter",link:'power-adaptor'  },
  
-  { icon: <BsPhone size={30} />, name: "Cover & Glass",link:'phones-tab'  },
-  { icon: <AiOutlineTablet size={30} />, name: "Phones & Tablets",link:'phones-tab'  },
-  { icon: <AiOutlineLaptop size={30} />, name: "MacBook",link:'phones-tab'  },
-  { icon: <AiOutlineAudio size={30} />, name: "Hubs & Docks",link:'phones-tab'  },
-  { icon: <BsWatch size={30} />, name: "Smart Watch" },
-  { icon: <BsHeadphones size={30} />, name: "Overhead Headphones",link:'phones-tab'  },
-  { icon: <AiOutlineUsb size={30} />, name: "Power Adapter",link:'phones-tab'  },
+  { icon: <BsPhone size={30} />, name: "Cover & Glass",link:'cover-glass'  },
  
-  { icon: <BsPhone size={30} />, name: "Cover & Glass",link:'phones-tab'  },
  
  
 ];

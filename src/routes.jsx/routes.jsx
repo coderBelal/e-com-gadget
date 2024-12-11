@@ -6,7 +6,7 @@ import ProductDetail from "../components/pages/ProductDetails";
 import ProductDetailCard from "../components/pages/ProductDetailCard";
 import ShoppingCart from "../components/pages/ShoppingCart";
 import CheckoutPage from "../components/pages/CheckOut";
-import PhoneTabs from "../components/featuredPage/PhoneTabs";
+ 
 import OfferCards from "../components/pages/OfferCards";
 import AllBrands from "../components/pages/AllBrands";
 import Dashboard from "../layouts/Dashboard";
@@ -20,6 +20,13 @@ import Analytics from "../components/pages/Dashboard/Analytics";
 import Payments from "../components/pages/Dashboard/Payments";
 import Support from "../components/pages/Dashboard/Support";
 import Settings from "../components/pages/Dashboard/Settings";
+import PhoneTabs from "../components/pages/FeaturePage/PhoneTabs";
+import { Macbook } from "../components/pages/FeaturePage/MacBook";
+import { HubDocks } from "../components/pages/FeaturePage/HubDocks";
+import { SmartWatch } from "../components/pages/FeaturePage/SmartWork";
+import { Headphones } from "../components/pages/FeaturePage/Headphone";
+import { PowerAdaptor } from "../components/pages/FeaturePage/PowerAdaptor";
+import { CoverGlass } from "../components/pages/FeaturePage/CoverGlass";
 
 export const router = createBrowserRouter([ 
     { 
@@ -51,10 +58,7 @@ export const router = createBrowserRouter([
             path:"/checkout/:productId",
             element: <CheckoutPage/>
         },
-        {
-            path:"/phones-tab",
-            element: <PhoneTabs/>
-        },
+      
         {
             path:"/offer-card",
             element: <OfferCards/>
@@ -63,7 +67,34 @@ export const router = createBrowserRouter([
             path:"/all-brand",
             element: <AllBrands/>
         },
-        
+        {
+            path:"/phone-tabs",
+            element:<PhoneTabs/>
+        },
+        {
+            path:"/mac-book",
+            element:<Macbook/>
+        },
+        {
+            path:"/hub-docs",
+            element:<HubDocks/>
+        },
+        {
+            path:"/smart-watch",
+            element:<SmartWatch/>
+        },{
+            path:"/headphone",
+            element:<Headphones/>
+        },
+        {
+            path:"/power-adaptor",
+            element:<PowerAdaptor/>
+        }
+        ,
+        {
+            path:"/cover-glass",
+            element:<CoverGlass/>
+        }
 
     ] 
     }, 

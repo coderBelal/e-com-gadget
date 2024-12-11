@@ -11,11 +11,17 @@ import { Link, Links } from "react-router-dom";
 
 const TopNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
-  const [isLogin, setIsLogin] = useState(true); // State to toggle between login and signup
-  const [showForgotPassword, setShowForgotPassword] = useState(false); // New state for forgot password
+  const [isLogin, setIsLogin] = useState(true);  
+  const [showForgotPassword, setShowForgotPassword] = useState(false);  
+  const [showSearchBar, setShowSearchBar] = useState(false);
+
+  const toggleSearchBar = () => {
+ setShowSearchBar(!showSearchBar)
+  };
 
   const handleShowLogin = () => {
-    setShowLogin(!showLogin);
+ 
+    setShowSearchBar(!showSearchBar);
   };
 
   const handleClose = () => {
@@ -23,11 +29,11 @@ const TopNavbar = () => {
   };
 
   const toggleForm = () => {
-    setIsLogin(!isLogin); // Toggle between login and signup
+    setIsLogin(!isLogin); 
     setShowForgotPassword(false);
   };
   const handleForgotPassword = () => {
-    setShowForgotPassword(true); // Show the forgot password form
+    setShowForgotPassword(true);  
   };
  
   // useEffect(() => {
@@ -44,26 +50,43 @@ const TopNavbar = () => {
 
   return (
     <>
-      <div className="bg-[#10151F] fixed lg:-top-5 left-0 w-full z-50 md:p-7">
+      <div className="bg-[#10151F] fixed lg:-top-5 left-0   h-18 w-full z-50 md:p-7">
         <div className="mx-auto max-w-7xl">
           <nav className="text-white flex flex-col md:flex-row items-center justify-between">
-          <Link to="/">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-                alt="logo"
-                className="h-6  "
-              />
-              <span className="text-xl font-bold">
-                <span className="text-sm ">AppleGadgets</span>
-              </span>
-            </div></Link>
-      
+  <div className="   flex items-center gap-5  space-x-2">
+    <div className="text-xl   mt-4 lg:mt-0   font-bold">
+      <Link to="/">   <h1 className="text-2xl ml-6">AppleGadgets</h1></Link>
+   
 
+    </div>
+    <div className="  mt-4 lg:mt-0  ">
+ 
+    <FaSearch
+  onClick={toggleSearchBar}
+  className="text-2xl  lg:hidden cursor-pointer"
+/>
+    </div>
+
+  </div>
+</div>
+
+
+{showSearchBar && (
+  <div className="absolute lg:hidden top-28 left-0 w-full px-4 z-50">
+    <input
+      type="text"
+      placeholder="Search..."
+      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+    />
+  </div>
+)}
+
+   
             {/* Search Bar */}
-            <div className="flex-grow flex items-center justify-center mb-4 md:mb-0">
+            <div className="flex-grow hidden  lg:flex items-center justify-center mb-4 md:mb-0">
               <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-full max-w-xs md:max-w">
-                <FaSearch className="text-[#9a3eaa] text-2xl" />
+                <FaSearch className=" text-2xl" />
                 <input
                   type="text"
                   placeholder="Search Your Product"
@@ -83,7 +106,7 @@ const TopNavbar = () => {
                   </span>
                 </div>
               </div></Link>
-           
+ 
               <Link to="/cart">
               <div className="flex items-center space-x-2">
                 <FaShoppingCart className="text-2xl" />
@@ -199,7 +222,7 @@ const TopNavbar = () => {
                     Forget Password
                   </a>
                 </div>
-                <button className="cursor-pointer py-2 px-4 block mt-6 bg-purple-600 text-white font-bold w-full text-center rounded">
+                <button className="cursor-pointer py-2 px-4 block mt-6   gradient-bg text-white font-bold w-full text-center rounded">
                   Login
                 </button>
               </form>
@@ -331,7 +354,7 @@ const TopNavbar = () => {
               </div>
           
               {/* Submit Button */}
-              <button className="cursor-pointer py-2 px-4 block mt-6 bg-purple-600 text-white font-bold w-full text-center rounded">
+              <button className="cursor-pointer py-2 px-4 block mt-6   gradient-bg text-white font-bold w-full text-center rounded">
                 Register
               </button>
             </form>

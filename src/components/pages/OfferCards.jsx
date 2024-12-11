@@ -30,11 +30,11 @@ const OfferCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 mt-48 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-1 mt-0 lg:mt-48 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
     {offers.map((offer, index) => (
       <div
         key={index}
-        className="max-w-sm rounded-lg shadow-lg border hover:shadow-2xl transition duration-300"
+        className="max-w-sm mt-28 rounded-lg shadow-lg border hover:shadow-2xl transition duration-300"
         data-aos="fade-up" // Add AOS animation here
       >
         {/* Image Section */}

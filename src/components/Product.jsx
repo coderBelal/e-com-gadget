@@ -125,10 +125,11 @@ const Product = () => {
           <p className="text-sm text-[#AFB1B4] group-hover:text-white">
             {product.description}
           </p>
-          <div className="mt-4 flex lg:gap-14 justify-between items-center">
+          <div className="mt-4 flex gap-14 justify-between items-center">
             <p className="font-semibold text-white">
               ${product.price.toFixed(2)}
             </p>
+         
             <Link to={`checkout/${product.id}`}>
   <button className="px-4 py-2 gradient-bg text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 relative">
     Buy Now

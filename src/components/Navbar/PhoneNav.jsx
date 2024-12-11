@@ -39,10 +39,12 @@ const handleForgotPassword = () => {
     <div> 
                 <div className="md:hidden fixed   bottom-0 left-0 w-full bg-black   z-50     shadow-lg ">
             <div className="flex justify-around items-center py-2">
+            <Link to=" /offer-card" >
               <div className="flex flex-col items-center">
-                <FaGift className="text-white text-xl" />
-                <span className="text-xs  ">Offers</span>
+                <FaEnvelope className="text-white text-xl" />
+                <span className="text-xs ">Pre-Order</span>
               </div>
+              </Link>
               <Link to="/cart">
               <div className="flex flex-col items-center space-x-2">
                 <FaShoppingCart className="text-xl" />
@@ -66,13 +68,16 @@ const handleForgotPassword = () => {
           </div>
                 {/* Register Form */}
       {showLogin && (
-        <div className="max-w-xl   p-4   py-8 px-8 h-auto bg-[#0F1012] md:ml-[25%] lg:ml-[35%]  rounded-lg shadow-2xl absolute top-0 left-0 right-0 z-[500] transition-opacity opacity-100">
-          <p
-            onClick={handleClose}
-            className="    cursor-pointer text-right "
-          >
-            X
-          </p>
+        <div className="max-w-xl mt-20     p-4   py-8 px-8 h-auto bg-[#0F1012] md:ml-[25%] lg:ml-[35%]  rounded-lg shadow-2xl absolute top-0 left-0 right-0 z-[500] transition-opacity opacity-100">
+           
+    <p
+      onClick={handleClose}
+      className="cursor-pointer text-right text-white font-bold"
+    >
+      X
+    </p>
+    {/* Rest of the login/signup form */}
+ 
           <div className="flex justify-between mb-4">
             {/* Tab buttons */}
             <button
@@ -170,11 +175,11 @@ const handleForgotPassword = () => {
             <div className="max-w-lg mx-auto  rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
            
               <form action="#" className="w-full flex flex-col gap-4">
-            
-                <div className="flex items-start flex-col justify-start">
+              <div className="flex gap-4">
+                <div className="flex flex-col w-1/2">
                   <label
                     htmlFor="firstName"
-                    className="  block gradient-text font-bold  mr-2"
+                    className="block gradient-text font-bold mb-2"
                   >
                     First Name:
                   </label>
@@ -182,14 +187,14 @@ const handleForgotPassword = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    placeholder="first name"
-                    className="w-full border text-gray-500 border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
+                    placeholder="First name"
+                    className="w-full border text-gray-500 border-gray-300 py-2 pl-3 rounded outline-none focus:ring-indigo-600"
                   />
                 </div>
-                <div className="flex items-start flex-col justify-start">
+                <div className="flex flex-col w-1/2">
                   <label
                     htmlFor="lastName"
-                    className=" block gradient-text font-bold mr-2"
+                    className="block gradient-text font-bold mb-2"
                   >
                     Last Name:
                   </label>
@@ -197,11 +202,13 @@ const handleForgotPassword = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    placeholder="last name"
-                    className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
+                    placeholder="Last name"
+                    className="w-full border text-gray-500 border-gray-300 py-2 pl-3 rounded outline-none focus:ring-indigo-600"
                   />
                 </div>
-                <div className="flex items-start flex-col justify-start">
+              </div>
+          
+                <div className="flex   items-start flex-col justify-start">
                   <label
                     htmlFor="username"
                     className="block gradient-text font-bold  mr-2"
@@ -216,7 +223,7 @@ const handleForgotPassword = () => {
                     className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
                   />
                 </div>
-                <div className="flex items-start flex-col justify-start">
+                <div className="flex  items-start flex-col justify-start">
                   <label
                     htmlFor="email"
                     className="block gradient-text font-bold mr-2"
@@ -231,7 +238,7 @@ const handleForgotPassword = () => {
                     className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
                   />
                 </div>
-                <div className="flex items-start flex-col justify-start">
+                <div className="flex  items-start flex-col justify-start">
                   <label
                     htmlFor="password"
                     className="block gradient-text font-bold mr-2"

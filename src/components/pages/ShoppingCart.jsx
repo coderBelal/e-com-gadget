@@ -140,9 +140,9 @@ const ShoppingCart = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
-              <div className="mt-4 flex flex-col lg:flex-row justify-between items-center">
+
+          {/* Promo and Discount Section */}
+          <div className="mt-4 flex flex-col lg:flex-row justify-between items-center">
             <div className="flex space-x-2 w-full lg:w-auto">
               <input
                 type="text"
@@ -165,37 +165,39 @@ const ShoppingCart = () => {
             </div>
           </div>
 
+          {/* Summary */}
+          <div className="mt-4 text-right text-white">
+            <p className="mb-2">
+              <span className="font-bold">Sub-Total:</span> $
+              {cartItems
+                .reduce((total, item) => total + item.price * item.quantity, 0)
+                .toFixed(2)}
+            </p>
+            <p className="mb-2">
+              <span className="font-bold">Delivery Charge:</span>{" "}
+              <span>(will be added)</span>
+            </p>
+            <p className="mb-2">
+              <span className="font-bold">Total Discount:</span> 0
+            </p>
+            <p className="text-xl font-bold">
+              <span>Total:</span> $
+              {cartItems
+                .reduce((total, item) => total + item.price * item.quantity, 0)
+                .toFixed(2)}
+            </p>
+          </div>
 
-      {/* Summary */}
-<div className="mt-4 text-right text-white">
-  <p className="mb-2">
-    <span className="font-bold">Sub-Total:</span> $
-    {cartItems
-      .reduce((total, item) => total + item.price * item.quantity, 0)
-      .toFixed(2)}
-  </p>
-  <p className="mb-2">
-    <span className="font-bold">Delivery Charge:</span>{" "}
-    <span>(will be added)</span>
-  </p>
-  <p className="mb-2">
-    <span className="font-bold">Total Discount:</span> 0
-  </p>
-  <p className="text-xl font-bold">
-    <span>Total:</span> $
-    {cartItems
-      .reduce((total, item) => total + item.price * item.quantity, 0)
-      .toFixed(2)}
-  </p>
-</div>
-
-{/* Checkout Button */}
-<div className="mt-8 text-center">
-  <button className="px-8 py-4 gradient-bg text-white font-semibold rounded-full">
-    PROCEED TO CHECKOUT
-  </button>
-</div>
-
+          {/* Checkout Button */}
+          {cartItems.length > 0 && (
+            <div className="mt-8 text-center">
+              <button className="px-8 py-4 gradient-bg text-white font-semibold rounded-full">
+                PROCEED TO CHECKOUT
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

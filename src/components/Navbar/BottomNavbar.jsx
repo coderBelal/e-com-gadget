@@ -63,14 +63,14 @@ const BottomNav = () => {
         <div className="flex justify-between md:hidden">
           <button
             onClick={() => setShowMenu(!showMenu)}
-            className="bg-gray-800 text-white px-2 py-2 rounded-md"
+            className="  gradient-bg    text-white  px-2 py-2 rounded-md"
           >
-            <IoReorderThreeOutline   />
+            <IoReorderThreeOutline size={20}  />
           </button>
         </div>
         {isMobileView && (
           <div
-            className={`fixed top-24 left-0 h-full w-2/3 bg-gray-800 text-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+            className={`fixed top-[60px] left-0 h-full w-2/3 bg-gray-800 text-white shadow-lg transform transition-transform duration-300 ease-in-out ${
               showMenu ? "translate-x-0" : "-translate-x-full"
             }`}
           >
