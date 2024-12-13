@@ -27,6 +27,8 @@ import { SmartWatch } from "../components/pages/FeaturePage/SmartWork";
 import { Headphones } from "../components/pages/FeaturePage/Headphone";
 import { PowerAdaptor } from "../components/pages/FeaturePage/PowerAdaptor";
 import { CoverGlass } from "../components/pages/FeaturePage/CoverGlass";
+import OrderTracking from "../components/pages/Dashboard/OrderTracking";
+import CourierCheck from "../components/pages/Dashboard/CourierCheck";
 
 export const router = createBrowserRouter([ 
     { 
@@ -131,14 +133,14 @@ export const router = createBrowserRouter([
                 path: "/dashboard/analytics",
                 element: <Analytics />,
             },
-            // {
-            //     path: "/dashboard/cms",
-            //     element: <CMS />,
-            // },
-            // {
-            //     path: "/dashboard/notifications",
-            //     element: <Notifications />,
-            // },
+            {
+                path: "/dashboard/order-tracking",
+                element:<OrderTracking/>  ,
+            },
+            {
+                path: "/dashboard/courier-check",
+                element:  <CourierCheck/>,
+            },
             {
                 path: "/dashboard/payments",
                 element: <Payments />,

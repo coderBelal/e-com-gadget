@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCreditCard, FaSearch, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import {   FaSearch, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 const Payments = () => {
     // Dummy data for payments

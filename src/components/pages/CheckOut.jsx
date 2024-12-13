@@ -17,13 +17,13 @@ const CheckoutPage = () => {
     <div className="min-h-screen p-6 flex flex-col items-center text-white  ">
       <div className="max-w-4xl mt-24 w-full p-6 rounded-lg shadow-md">
         <p className="bg-yellow-100 text-yellow-800 p-2 text-center rounded-md text-sm mb-4">
-          অর্ডার সম্পন্ন করতে সমস্যায় পড়লে কল করুন কাস্টমার সার্ভিস রিপ্রেজেন্টেটিভ এর সাথে - 09678184148
+          অর্ডার সম্পন্ন করতে সমস্যায় পড়লে কল করুন কাস্টমার সার্ভিস রিপ্রেজেন্টেটিভ এর সাথে -  012467443954
         </p>
 
         {/* Payment Methods */}
         <div className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Payment Method</h2>
-          <div className="flex space-x-4">
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
             <button
               className={`flex items-center space-x-2 p-3 rounded-md border ${paymentMethod === "cod" ? "border-green-500  " : "border-gray-300"}`}
               onClick={() => setPaymentMethod("cod")}
