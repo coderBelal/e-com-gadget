@@ -29,6 +29,10 @@ import { PowerAdaptor } from "../components/pages/FeaturePage/PowerAdaptor";
 import { CoverGlass } from "../components/pages/FeaturePage/CoverGlass";
 import OrderTracking from "../components/pages/Dashboard/OrderTracking";
 import CourierCheck from "../components/pages/Dashboard/CourierCheck";
+import OrderPending from "../components/pages/Dashboard/OrderPending";
+import OrdersCompleted from "../components/pages/Dashboard/OrdersCompleted";
+import OrderCancel from "../components/pages/Dashboard/OrderCancel";
+import ProcessingOrder from "../components/pages/Dashboard/ProcessingOrder";
 
 export const router = createBrowserRouter([ 
     { 
@@ -121,6 +125,22 @@ export const router = createBrowserRouter([
                 path: "/dashboard/transactions",
                 element: <Transactions />,
             },
+            {
+                path:"/dashboard/order-pending",
+                element:<OrderPending/>
+            },
+             {
+                path:"/dashboard/order-completed",
+                element:<OrdersCompleted/>
+             },
+             {
+                path:"/dashboard/order-cancel",
+                element:<OrderCancel/>
+             },
+             {
+                path:"/dashboard/order-processing",
+                element:<ProcessingOrder/>
+             },
             {
                 path: "/dashboard/reports",
                 element: <Reports />,

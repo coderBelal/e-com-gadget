@@ -68,6 +68,11 @@ const Dashboard = () => {
         <SidebarItem label="Dashboard" Icon={FaTachometerAlt} isCollapsed={isCollapsed} to="/dashboard" />
 <SidebarItem label="Users" Icon={FaUsers} isCollapsed={isCollapsed} to="/dashboard/users" />
 {/* <SidebarItem label="Listings" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="/dashboard/listings" /> */}
+<SidebarItem label="Order" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="" />
+<SidebarItem label="Order Pending" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="/dashboard/order-pending" />
+<SidebarItem label="Order Completed" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="/dashboard/order-completed" />
+<SidebarItem label="Order  Processing" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="/dashboard/order-processing" />
+<SidebarItem label="Order  Cancel" Icon={FaMobileAlt} isCollapsed={isCollapsed} to="/dashboard/order-cancel" />
 <SidebarItem label="Transactions" Icon={FaExchangeAlt} isCollapsed={isCollapsed} to="/dashboard/transactions" />
 {/* <SidebarItem label="Reports" Icon={FaExclamationCircle} isCollapsed={isCollapsed} to="/dashboard/reports" /> */}
 <SidebarItem label="Categories" Icon={FaTags} isCollapsed={isCollapsed} to="/dashboard/categories" />

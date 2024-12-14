@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"; 
-import { IoReorderThreeOutline } from "react-icons/io5"; 
+import { IoReorderThreeOutline, IoCloseOutline  } from "react-icons/io5"; 
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"; 
 
 const BottomNav = () => {   
-  const [showMenu, setShowMenu] = useState(false);   
+ 
   const [activeItem, setActiveItem] = useState(null);   
   const [isMobileView, setIsMobileView] = useState(false);   
   const [isScrolled, setIsScrolled] = useState(false); 
-
+  const [showMenu, setShowMenu] = useState(false);
   const menuItems = [     
     { title: "Phones & Tablets", content: "Details about Phones & Tablets." },     
     { title: "Laptop & Desktop", content: "Details about Laptop & Desktop." },     
@@ -61,13 +61,17 @@ const BottomNav = () => {
       <div className="mx-auto max-w-7xl">
         {/* Mobile & Tablet Screen */}
         <div className="flex justify-between md:hidden">
-          <button
-            onClick={() => setShowMenu(!showMenu)}
-            className="  gradient-bg    text-white  px-2 py-2 rounded-md"
-          >
-            <IoReorderThreeOutline size={20}  />
-          </button>
-        </div>
+      <button
+        onClick={() => setShowMenu(!showMenu)}
+        className="gradient-bg text-white px-2 py-2 rounded-md"
+      >
+        {showMenu ? (
+          <IoCloseOutline size={20} />
+        ) : (
+          <IoReorderThreeOutline size={20} />
+        )}
+      </button>
+    </div>
         {isMobileView && (
           <div
             className={`fixed top-[60px] left-0 h-full w-2/3 bg-gray-800 text-white shadow-lg transform transition-transform duration-300 ease-in-out ${

@@ -132,16 +132,16 @@ const ProductDetail = () => {
   return (
     <div className="  ">
       <div className="container   mx-auto px-4 py-8">
-        <div className="flex flex-wrap -mx-4 mt-24">
+        <div className="flex flex-wrap mx-4 mt-24">
           {/* Product Images */}
           <div className="w-full md:w-1/2 px-4 mb-8 relative">
   <img
     src={mainImage}
     alt="Product"
-    className="w-full h-auto rounded-lg shadow-md mb-4 absolute sm:w-full"
+    className="w-full h-auto rounded-lg shadow-md mb-4   sm:w-full"
     id="mainImage"
   />
-  <div className="flex gap-4 flex-col lg:flex-row md:flex-row py-4 justify-center overflow-x-auto sm:flex-col">
+  <div className="flex gap-4  lg:flex-row md:flex-row py-4 justify-center overflow-x-auto sm:flex-col">
     <img
       src="https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080"
       alt="Thumbnail 1"
