@@ -33,6 +33,8 @@ import OrderPending from "../components/pages/Dashboard/OrderPending";
 import OrdersCompleted from "../components/pages/Dashboard/OrdersCompleted";
 import OrderCancel from "../components/pages/Dashboard/OrderCancel";
 import ProcessingOrder from "../components/pages/Dashboard/ProcessingOrder";
+import OrderDetails from "../components/pages/Dashboard/OrderDetails";
+import { elements } from "chart.js";
 
 export const router = createBrowserRouter([ 
     { 
@@ -126,9 +128,14 @@ export const router = createBrowserRouter([
                 element: <Transactions />,
             },
             {
-                path:"/dashboard/order-pending",
-                element:<OrderPending/>
-            },
+                path: "/dashboard/order-pending",
+                element: <OrderPending />,
+              },
+              {
+                path: "/dashboard/order-pending/order/:OrderId",
+                element: <OrderDetails />,
+              },
+              
              {
                 path:"/dashboard/order-completed",
                 element:<OrdersCompleted/>
