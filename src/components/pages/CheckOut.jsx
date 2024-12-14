@@ -1,23 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import TimeSelector from "./TimeSelector";
 
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [selectedTime, setSelectedTime] = useState(null);
   const { productId } = useParams();
+
+  // Get current time and calculate the next 6 hours
+  const getCurrentTime = () => {
+    const now = new Date();
+    return now;
+  };
+
+  const getAvailableTimes = () => {
+    const now = getCurrentTime();
+    const availableTimes = [];
+    for (let i = 1; i <= 6; i++) {
+      let nextHour = new Date(now.getTime() + i * 60 * 60 * 1000);
+      availableTimes.push(nextHour);
+    }
+    return availableTimes;
+  };
 
   const products = [
     { id: 1, title: 'iPhone 15 Plus', description: 'The latest iPhone with advanced features and a stunning design.', price: 30000, image: 'https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg' },
     // Other products...
   ];
-  
+
   const product = products.find((p) => p.id === parseInt(productId));
-  
+
+  const availableTimes = getAvailableTimes();
+
+  const handleTimeChange = (time) => {
+    setSelectedTime(time);
+  };
+
+  const formattedTime = (time) => {
+    return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   return (
-    <div className="min-h-screen p-6 flex flex-col items-center text-white  ">
+    <div className="min-h-screen p-6 flex flex-col items-center text-white">
       <div className="max-w-4xl mt-24 w-full p-6 rounded-lg shadow-md">
         <p className="bg-yellow-100 text-yellow-800 p-2 text-center rounded-md text-sm mb-4">
-          অর্ডার সম্পন্ন করতে সমস্যায় পড়লে কল করুন কাস্টমার সার্ভিস রিপ্রেজেন্টেটিভ এর সাথে -  012467443954
+          অর্ডার সম্পন্ন করতে সমস্যায় পড়লে কল করুন কাস্টমার সার্ভিস রিপ্রেজেন্টেটিভ এর সাথে - 012467443954
         </p>
 
         {/* Payment Methods */}
@@ -25,14 +53,14 @@ const CheckoutPage = () => {
           <h2 className="text-xl font-semibold mb-2">Payment Method</h2>
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
             <button
-              className={`flex items-center space-x-2 p-3 rounded-md border ${paymentMethod === "cod" ? "border-green-500  " : "border-gray-300"}`}
+              className={`flex items-center space-x-2 p-3 rounded-md border ${paymentMethod === "cod" ? "border-green-500" : "border-gray-300"}`}
               onClick={() => setPaymentMethod("cod")}
             >
               <FaCheckCircle className={`text-lg ${paymentMethod === "cod" ? "text-green-500" : "text-white"}`} />
               <span>Cash on Delivery</span>
             </button>
             <button
-              className={`flex items-center space-x-2 p-3 rounded-md border ${paymentMethod === "online" ? "border-green-500  " : "border-gray-300"}`}
+              className={`flex items-center space-x-2 p-3 rounded-md border ${paymentMethod === "online" ? "border-green-500" : "border-gray-300"}`}
               onClick={() => setPaymentMethod("online")}
             >
               <FaCheckCircle className={`text-lg ${paymentMethod === "online" ? "text-green-500" : "text-white"}`} />
@@ -41,8 +69,8 @@ const CheckoutPage = () => {
           </div>
         </div>
 
+        {/* Billing Details */}
         <div className="flex flex-col lg:flex-row space-x-8">
-          {/* Billing Details */}
           <div className="flex-1 mb-6">
             <h2 className="text-xl font-semibold mb-2">Billing Details</h2>
             <form>
@@ -74,6 +102,9 @@ const CheckoutPage = () => {
                   className="w-full p-2 border rounded-md bg-gray-800 focus:outline-none focus:ring focus:ring-green-200"
                 ></textarea>
               </div>
+
+              <TimeSelector/>
+
               <div className="flex items-center space-x-2">
                 <input type="checkbox" id="terms" />
                 <label htmlFor="terms" className="text-sm">
@@ -95,19 +126,19 @@ const CheckoutPage = () => {
             <h2 className="text-xl font-semibold mb-4">Your Order</h2>
             <div className="flex items-center mb-4">
               <img
-                src={product.image}
-                alt={product.title}
+                src="https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg"
+                alt="iPhone 15 Plus"
                 className="w-20 h-20 object-cover rounded-md mr-4"
               />
               <div>
-                <h3 className="text-lg font-medium">{product.title}</h3>
-                <p className="text-sm text-gray-400">{product.description}</p>
+                <h3 className="text-lg font-medium">iPhone 15 Plus</h3>
+                <p className="text-sm text-gray-400">The latest iPhone with advanced features and a stunning design.</p>
               </div>
             </div>
             
             <div className="flex justify-between mb-2">
               <span className="text-sm">Price</span>
-              <span>{product.price} TK</span>
+              <span>30000 TK</span>
             </div>
             
             <div className="flex justify-between mb-2">

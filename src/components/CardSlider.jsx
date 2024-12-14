@@ -104,9 +104,9 @@ const ProductList = () => {
   <div className="relative mb-4">
     <button
       onClick={scrollLeft}
-      className="absolute z-[1000] left-8 top-44 transform -translate-y-1/2 p-2 rounded-full gradient-bg opacity-70 transition-all"
+      className="absolute z-[1000] left-8 top-52 transform -translate-y-1/2 p-2 rounded-full gradient-bg opacity-70 transition-all"
     >
-      <FaChevronLeft size={20} className="text-gray-700" />
+      <FaChevronLeft size={20} className="text-white" />
     </button>
     <div className="mb-4 text-center">
       <h2 className="text-3xl uppercase font-bold gradient-text">
@@ -118,9 +118,9 @@ const ProductList = () => {
     </div>
     <button
       onClick={scrollRight}
-      className="absolute z-50 right-8 top-44 transform -translate-y-1/2 p-2 rounded-full gradient-bg opacity-70 transition-all"
+      className="absolute z-50 right-8 top-52 transform -translate-y-1/2 p-2 rounded-full gradient-bg opacity-70 transition-all"
     >
-      <FaChevronRight size={20} className="text-gray-700" />
+      <FaChevronRight size={20} className="text-white" />
     </button>
   </div>
 
@@ -160,7 +160,7 @@ const ProductList = () => {
           <p className="font-semibold text-white">
             ${product.price.toFixed(2)}
           </p>
-          <Link to={`checkout/${product.id}`}>
+          <Link to={`/checkout`}>
   <button className="px-4 py-2 gradient-bg text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 relative">
     Buy Now
     <span className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">

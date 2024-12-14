@@ -5,6 +5,9 @@ import RelatedProduct from './RelatedProduct';
 
 const ProductDetail = () => {
   const { productId } = useParams();
+
+
+  
  
  
   const products = [
@@ -104,26 +107,77 @@ const ProductDetail = () => {
     if (activeTab === "specification") {
       return (
         <div>
-          <h2 className="text-xl gradient-text font-semibold">Product Specifications</h2>
-          <ul className="list-disc text-white pl-5">
-            <li>Size: 10x10x10 cm</li>
-            <li>Weight: 500g</li>
-            <li>Color: Black</li>
-            <li>Material: Plastic</li>
-          </ul>
+          <div className="mx-auto max-w-7xl">
+  <div className="mt-6">
+      <div className=" rounded-lg p-6 shadow-lg">
+        <table className="min-w-full text-left">
+          <tbody>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Brand</td>
+              <td className="py-2 text-gray-200">Samsung</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Model</td>
+              <td className="py-2 text-gray-200">Galaxy S23 FE 5G</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Network</td>
+              <td className="py-2 text-gray-200">GSM / HSPA / LTE / 5G</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Dimensions</td>
+              <td className="py-2 text-gray-200">158 x 76.5 x 8.2 mm</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Weight</td>
+              <td className="py-2 text-gray-200">209 g</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">SIM</td>
+              <td className="py-2 text-gray-200">Single SIM | Dual SIM | Nano-SIM | eSIM</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Display Type</td>
+              <td className="py-2 text-gray-200">Dynamic AMOLED 2X</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Display Size</td>
+              <td className="py-2 text-gray-200">6.4 inches</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Display Resolution</td>
+              <td className="py-2 text-gray-200">1080 x 2340 pixels</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">OS</td>
+              <td className="py-2 text-gray-200">Android 13</td>
+            </tr>
+            <tr className="border-b border-gray-800 !py-2">
+              <td className="py-2 font-semibold text-white">Chipset</td>
+              <td className="py-2 text-gray-200">Exynos 2200</td>
+            </tr>
+            <tr>
+              <td className="py-2 font-semibold text-white">CPU</td>
+              <td className="py-2 text-gray-200">Octa-core</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
         </div>
       );
     } else if (activeTab === "description") {
       return (
         <div>
-          <h2 className="text-xl gradient-text font-semibold">Product Description</h2>
-          <p className="text-white">This is a high-quality product designed for everyday use. It offers great value for money and is built to last.</p>
+          <h2 className="text-xl gradient-text mb-3">Galaxy S23 FE 5G</h2>
+          <p className="text-white">Samsung has unveiled the highly anticipated Galaxy S23FE, the latest iteration in its popular FE series. Boasting a sturdy aluminum construction, this smartphone not only exudes durability but also comes in a range of captivating colors that are sure to entice users. Backed by a powerful hardware and software synergy, the Galaxy S23FE delivers exceptional performance. The camera system lives up to its reputation, ensuring stunning photos and videos. Overall, this device is a top choice for budget-conscious consumers who seek a flagship-level smartphone experience.</p>
         </div>
       );
     } else if (activeTab === "warranty") {
       return (
         <div>
-          <h2 className="text-xl gradient-text font-semibold">Warranty Information</h2>
           <p className="text-white">The product comes with a 1-year warranty covering manufacturing defects. Please retain your receipt for warranty claims.</p>
         </div>
       );
@@ -131,21 +185,21 @@ const ProductDetail = () => {
   };
   return (
     <div className="  ">
-      <div className="container   mx-auto px-4 py-8">
-        <div className="flex flex-wrap mx-4 mt-24">
+      <div className="container   mx-auto md:px-4 py-8">
+        <div className="flex flex-wrap mx-4 mt-28">
           {/* Product Images */}
-          <div className="w-full md:w-1/2 px-4 mb-8 relative">
+          <div className="w-full md:w-5/12 md:px-4 mb-8 relative">
   <img
     src={mainImage}
     alt="Product"
-    className="w-full h-auto rounded-lg shadow-md mb-4   sm:w-full"
+    className="w-[95%] h-auto border border-gray-800 shadow-md mb-4"
     id="mainImage"
   />
-  <div className="flex gap-4  lg:flex-row md:flex-row py-4 justify-center overflow-x-auto sm:flex-col">
+  <div className="flex gap-4 w-[95%] lg:flex-row md:flex-row  justify-center overflow-x-auto sm:flex-col">
     <img
       src="https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080"
       alt="Thumbnail 1"
-      className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+      className="size-16 object-cover border border-gray-800 cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
       onClick={() =>
         changeImage(
           "https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080"
@@ -155,7 +209,7 @@ const ProductDetail = () => {
     <img
       src="https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
       alt="Thumbnail 2"
-      className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+      className="size-16 object-cover border border-gray-800 cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
       onClick={() =>
         changeImage(
           "https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
@@ -165,7 +219,7 @@ const ProductDetail = () => {
     <img
       src="https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
       alt="Thumbnail 3"
-      className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+      className="size-16 object-cover border border-gray-800 cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
       onClick={() =>
         changeImage(
           "https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
@@ -175,7 +229,7 @@ const ProductDetail = () => {
     <img
       src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
       alt="Thumbnail 4"
-      className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+      className="size-16 object-cover border border-gray-800 cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
       onClick={() =>
         changeImage(
           "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
@@ -187,68 +241,73 @@ const ProductDetail = () => {
 
 
           {/* Product Details */}
-          <div className="w-full md:w-1/2 px-4  ">
-            <h2 className="text-3xl  gradient-text font-bold mb-2"> {product.title}</h2>
-            <p className=" text-white mb-4">SKU: WH1000XM4</p>
-            <div className='  flex flex-col lg:flex-row md:gird md:grid-cols-2 gap-5'>
-            <div className="mb-4 bg-slate-100 p-1 rounded-lg     w-48">
-              <span className=" mr-2">TK {product.price}</span>
-              <span className="  line-through">TK399.99</span>
-            </div>
-            <div>
-            <div className="mb-4 font-semibold bg-slate-100 p-1 rounded-lg     w-48">
-           <p  > Stock: In Stock</p>
-            </div>
-            
-            </div>
-            <div className="mb-4 bg-slate-100 p-1 rounded-lg     w-48">
-            <p >  Product Code: AGL24660</p>
-            </div>
-            </div>
-      
-            <div className="flex items-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 text-yellow-500">
+          <div className="w-full md:w-7/12 px-4  ">
+            <div className='flex items-center gap-5'>
+            <h2 className="text-2xl  gradient-text font-bold mb-2"> {product.title}</h2>
+            <div className="flex items-center text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-yellow-500">
                 <path
                   fill-rule="evenodd"
                   d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
                   clip-rule="evenodd"
                 />
               </svg>
-              <span className="ml-2   text-white">4.5 (120 reviews)</span>
+              <span className="ml-1  text-white">4.5 (120 reviews)</span>
             </div>
-            <p className=" text-white mb-6">
+            </div>
+            <p className=" text-gray-200 text-[15px] mb-7 mt-3">SKU: WH1000XM4</p>
+            <div className='  flex flex-col lg:flex-row md:gird md:grid-cols-2 gap-5'>
+            <div className="mb-4 bg-[#0C111A] py-2 text-center text-gray-200 font-light text-[15px] w-48">
+              <span className=" mr-2">TK {product.price}</span>
+              <span className="  line-through">TK399.99</span>
+            </div>
+            <div>
+            <div className="mb-4 bg-[#0C111A] py-2 text-center text-gray-200 font-light text-[15px] w-48">
+           <p  > Stock: In Stock</p>
+            </div>
+            
+            </div>
+            <div className="mb-4 bg-[#0C111A] py-2 text-center text-gray-200 font-light text-[15px] w-48">
+            <p >  Product Code: AGL24660</p>
+            </div>
+            </div>
+      
+           
+            <p className=" text-white mb-10">
               {product.description}
             </p>
-            <div className="p-4">
+            <div className="">
       {/* Sim Selection */}
-      <div className="mb-4">
+      <div className="mb-4 text-[15px] flex items-center">
         <span className="mr-4 font-semibold text-white ">Sim:</span>
+        <div>
         <button
-          className={`px-4 py-2 mr-2   rounded-md  ${
-            activeSim === "Dual" ? " bg-purple-600 text-white font-semibold" : "bg-gray-200 text-black font-semibold"
+          className={`px-4 py-1 mr-2   border border-gray-800  ${
+            activeSim === "Dual" ? " bg-purple-600 text-white " : "bg-[#0C111A] text-gray-200 "
           }`}
           onClick={() => setActiveSim("Dual")}
         >
           Dual
         </button>
         <button
-          className={`px-4 py-2 rounded-md   ${
-            activeSim === "Single" ? " bg-purple-600 text-white font-semibold" : "bg-gray-200 text-black font-semibold"
+          className={`px-4 py-1 border border-gray-800   ${
+            activeSim === "Single" ? " bg-purple-600 text-white " : "bg-[#0C111A] text-gray-200 "
           }`}
           onClick={() => setActiveSim("Single")}
         >
           Single
         </button>
+        </div>
       </div>
 
       {/* Storage Selection */}
       <div>
-        <span className="mr-4 font-semibold text-white">Storage:</span>
+        <span className="mr-4 font-semibold text-white text-[15px]">Storage:</span>
         {["12/256GB", "12/512GB", "12GB/1TB"].map((storage) => (
           <button
             key={storage}
-            className={`px-4 py-2 mr-2 r rounded-md  ${
-              activeStorage === storage ? " bg-purple-600 text-white font-semibold" : "bg-gray-200 text-black font-semibold"
+            className={`px-4 py-1 mr-2 r border border-gray-800  ${
+              activeStorage === storage ? " bg-purple-600 text-white " : "bg-[#0C111A] text-gray-200 "
             }`}
             onClick={() => setActiveStorage(storage)}
           >
@@ -258,45 +317,62 @@ const ProductDetail = () => {
       </div>
     </div>
 
-            <div className="mb-6">
-              <h3 className="text-lg text-white font-semibold mb-2">Color:</h3>
+            <div className="mb-6 flex mt-6 gap-4 items-center">
+              <h3 className="text-[15px] text-white font-semibold ">Color:</h3>
               <div className="flex space-x-2">
-                <button className="w-8 h-8    bg-blue-900 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"></button>
-                <button className="w-8 h-8 bg-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300"></button>
-                <button className="w-8 h-8 bg-blue-500 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></button>
-                <button className="w-8 h-8 bg-green-500 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></button>
+                <button className="w-6 h-6    bg-blue-900 shadow-lg hover:shadow-purple-800  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"></button>
+                <button className="w-6 h-6 bg-gray-300 shadow-lg hover:shadow-purple-800  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300"></button>
+                <button className="w-6 h-6 bg-blue-500 shadow-lg hover:shadow-purple-800  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></button>
+                <button className="w-6 h-6 bg-green-500 shadow-lg hover:shadow-purple-800  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></button>
               </div>
             </div>
 
-            <div className="flex items-center gap-5 mb-6">
-  <div>
-    <button className="gradient-bg text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300">
-      Pre Order
-    </button>
-  </div>
+            <div className="md:flex items-center gap-5 mb-6 mt-10 ">
+  <div className=''>
 
   <div className="flex items-center gap-2">
     <button
-      className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition duration-300"
+      className="bg-[#0C111A] text-white px-4 py-2 border hover:border-purple-700 transition duration-300 border-gray-800"
       onClick={decrementCount}
       title="Decrement"
     >
       -
     </button>
 
-    <span className="px-5 py-2 bg-gray-200 text-gray-800 rounded-full">
+    <span className="px-10 py-2 bg-[#0C111A] w-full text-center text-gray-300 border border-gray-800">
       {count}
     </span>
 
     <button
-      className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition duration-300"
+      className="bg-[#0C111A] text-white px-4 py-2 border hover:border-purple-700 transition duration-300 border-gray-800"
       onClick={incrementCount}
       title="Increment"
     >
       +
     </button>
   </div>
+
+
+    
+  </div>
+
+  <div className='gradient-bg w-full h-[41px] md:w-[45%] hidden md:grid'>
+    <button className="bg-[#06080D] hover:bg-transparent h-[37.5px] relative top-[1.7px] w-[98%] ml-[2px] text-white py-[9px] px-12 mt-5 md:mt-0  border-transparent hover:border-blue-600 transition duration-300">
+    <span className='relative bottom-1'>Add to Cart</span>
+      </button>
+  </div>
+    
+  <div className='gradient-bg w-full md:hidden relative h-[41px] md:w-[45%] mt-5'>
+    <button className="bg-[#06080D] hover:bg-transparent h-[37.5px] absolute top-[1.7px] w-[98.5%] ml-[2px] text-white py-[9px] px-12 mt- md:mt-0  border-transparent hover:border-blue-600 transition duration-300">
+    <span className='relative bottom-1'>Add to Cart</span>
+      </button>
+  </div>
+
+  <button className="gradient-bg text-white py-[9px] px-12 w-full md:w-[40%] mt-2 md:mt-0  border-transparent hover:border-blue-600 transition duration-300">
+      Buy Now
+    </button>
 </div>
+
 
           </div>
         </div>
@@ -304,26 +380,47 @@ const ProductDetail = () => {
       <RelatedProduct/>
       {/*  tabs section */}
       <div className="p-6  mx-auto max-w-7xl">
-      <div className="flex space-x-4 border-b-2 pb-4">
-        <div
-          className={`cursor-pointer py-2 px-4 ${activeTab === "specification" ? "text-blue-500 border-b-2 border-blue-500 font-semibold" : "text-gray-600 hover:text-blue-500"}`}
-          onClick={() => setActiveTab("specification")}
-        >
-          Specification
-        </div>
-        <div
-          className={`cursor-pointer py-2 px-4 ${activeTab === "description" ? "text-blue-500 border-b-2 border-blue-500 font-semibold" : "text-gray-600 hover:text-blue-500"}`}
-          onClick={() => setActiveTab("description")}
-        >
-          Description
-        </div>
-        <div
-          className={`cursor-pointer py-2 px-4 ${activeTab === "warranty" ? "text-blue-500 border-b-2 border-blue-500 font-semibold" : "text-gray-600 hover:text-blue-500"}`}
-          onClick={() => setActiveTab("warranty")}
-        >
-          Warranty
-        </div>
-      </div>
+      <div className="relative">
+  {/* Tab Buttons */}
+  <div className="flex space-x-4 pb-4 mt-10">
+    <div
+      className={`cursor-pointer py-2 px-6 relative transition-all duration-300 ${
+        activeTab === "specification" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"
+      }`}
+      onClick={() => setActiveTab("specification")}
+    >
+      Specification
+    </div>
+    <div
+      className={`cursor-pointer py-2 px-6 relative transition-all duration-300 ${
+        activeTab === "description" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"
+      }`}
+      onClick={() => setActiveTab("description")}
+    >
+      Description
+    </div>
+    <div
+      className={`cursor-pointer py-2 px-6 relative transition-all duration-300 ${
+        activeTab === "warranty" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"
+      }`}
+      onClick={() => setActiveTab("warranty")}
+    >
+      Warranty
+    </div>
+  </div>
+
+  {/* Sliding Indicator */}
+  <div
+    className={`absolute bottom-0 h-[2px] bg-purple-600 transition-all duration-300 ease-in-out`}
+    style={{
+      width: `${activeTab === "specification" ? "140px" : activeTab === "description" ? "145px" : "145px"}`,
+      transform: `translateX(${
+        activeTab === "specification" ? "5px" : activeTab === "description" ? "145px" : "280px"
+      })`,
+    }}
+  ></div>
+</div>
+
 
       <div className="mt-6">
         {renderContent()}

@@ -353,7 +353,7 @@ const ProductPage = () => {
                 <p className="font-semibold text-white">
                   ${product.price.toFixed(2)}
                 </p>
-                <Link to={`checkout/${product.id}`}>
+                <Link to={`/checkout`}>
                   <button className="px-4 py-2 gradient-bg text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 relative">
                     Buy Now
                     <span className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">

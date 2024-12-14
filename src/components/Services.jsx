@@ -4,18 +4,18 @@ const Services = () => {
   return (
     <div>
     {/* Service Info Section */}
-    <div className="mt-10 py-8">
+    <div className="mt-10 md:mt-0 py-8">
       <div className="mx-auto max-w-7xl px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         {/* Service Card 1 */}
         <div 
           data-aos="zoom-in" 
-          className="flex   rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
+          className="flex gap-0 md:gap-2  rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
         >
           <div className="flex items-center justify-center gradient-bg text-white rounded-full p-3">
             <IoMdPhonePortrait className="text-2xl" />
           </div>
-          <div className="text-center">
+          <div className=" text-center md:text-left">
             <p className="font-semibold text-sm gradient-text">Outfit Finder</p>
             <p className="text-sm text-white hidden md:block lg:block">Find Outfit for Gadget</p>
           </div>
@@ -24,12 +24,12 @@ const Services = () => {
         {/* Service Card 2 */}
         <div 
           data-aos="zoom-in" 
-          className="flex rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
+          className="flex gap-0 md:gap-2 rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
         >
           <div className="flex items-center justify-center gradient-bg text-white rounded-full p-3">
             <IoMdPhonePortrait className="text-2xl" />
           </div>
-          <div className="text-center">
+          <div className=" text-center md:text-left">
             <p className="font-semibold text-sm gradient-text">Outfit Finder</p>
             <p className="text-sm text-white hidden md:block lg:block">Find Outfit for Gadget</p>
           </div>
@@ -38,12 +38,12 @@ const Services = () => {
         {/* Service Card 3 */}
         <div 
           data-aos="zoom-in" 
-          className="flex   rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
+          className="flex gap-0 md:gap-2  rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
         >
           <div className="flex items-center justify-center gradient-bg text-white rounded-full p-3">
             <IoMdPhonePortrait className="text-2xl" />
           </div>
-          <div className="text-center">
+          <div className=" text-center md:text-left">
             <p className="font-semibold text-sm gradient-text">Outfit Finder</p>
             <p className="text-sm text-white hidden md:block lg:block">Find Outfit for Gadget</p>
           </div>
@@ -52,12 +52,12 @@ const Services = () => {
         {/* Service Card 4 */}
         <div 
           data-aos="zoom-in" 
-          className="flex   rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
+          className="flex gap-0 md:gap-2  rounded-lg items-center bg-[#0F1012] h-20 transition-all duration-300 p-4 shadow-lg transform hover:scale-105"
         >
           <div className="flex items-center justify-center gradient-bg text-white rounded-full p-3">
             <IoMdPhonePortrait className="text-2xl" />
           </div>
-          <div className="text-center">
+          <div className=" text-center md:text-left">
             <p className="font-semibold text-sm gradient-text">Outfit Finder</p>
             <p className="text-sm text-white hidden md:block lg:block">Find Outfit for Gadget</p>
           </div>
