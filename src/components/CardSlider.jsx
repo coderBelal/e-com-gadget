@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { CartContext } from "./context/CartContext";
 import { useNotification } from "./context/NotificationContext";
 import { IoIosArrowForward } from 'react-icons/io';
+import { TiShoppingCart } from "react-icons/ti";
 const ProductList = () => {
   const products = [
     {

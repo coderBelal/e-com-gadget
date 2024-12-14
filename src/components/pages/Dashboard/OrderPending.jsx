@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const OrderPending = () => {
   const [orders, setOrders] = useState([
@@ -34,54 +35,31 @@ const OrderPending = () => {
   };
 
   return (
-    <div className="   min-h-screen">
-      <h1 className="text-2xl   text-white font-semibold  ">Pending Orders</h1>
-      <div className=" shadow-md rounded-lg overflow-hidden">
+    <div className="min-h-screen">
+      <h1 className="text-2xl text-white font-semibold">Pending Orders</h1>
+      <div className="shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full table-auto">
-          <thead className="   hover:bg-gray-700">
+          <thead className="hover:bg-gray-700">
             <tr>
-              <th className="px-6 py-3 text-left text-sm font-medium  text-white">
-                Order ID
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium  text-white">
-                Customer
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium  text-white">
-                Items
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium  text-white">
-                Total
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium  text-white">
-                Status
-              </th>
-              <th className="px-6 py-3 text-center text-sm font-medium text-white">
-                Action
-              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Order ID</th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Customer</th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Items</th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Total</th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Status</th>
+              <th className="px-6 py-3 text-center text-sm font-medium text-white">Action</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr
-                key={order.id}
-                className="  hover:bg-gray-700 transition-colors  duration-200"
-              >
-                <td className="px-6 py-4 text-sm   text-white">{order.id}</td>
-                <td className="px-6 py-4 text-sm  text-white">
-                  {order.customer}
-                </td>
-                <td className="px-6 py-4 text-sm  text-white">
-                  {order.items}
-                </td>
-                <td className="px-6 py-4 text-sm  text-white">
-                  {order.total}
-                </td>
-                <td className="px-6 py-4 text-sm  text-white">
+              <tr key={order.id} className="hover:bg-gray-700 transition-colors duration-200">
+                <td className="px-6 py-4 text-sm text-white">{order.id}</td>
+                <td className="px-6 py-4 text-sm text-white">{order.customer}</td>
+                <td className="px-6 py-4 text-sm text-white">{order.items}</td>
+                <td className="px-6 py-4 text-sm text-white">{order.total}</td>
+                <td className="px-6 py-4 text-sm text-white">
                   <span
                     className={`py-1 px-3 rounded-lg text-white ${
-                      order.status === "Pending"
-                        ? "bg-yellow-500"
-                        : "bg-green-500"
+                      order.status === "Pending" ? "bg-yellow-500" : "bg-green-500"
                     }`}
                   >
                     {order.status}
@@ -96,6 +74,11 @@ const OrderPending = () => {
                       Mark as Completed
                     </button>
                   )}
+                  <Link to={`/dashboard/order-pending/order/${order.id}`}>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">
+                      Details
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}

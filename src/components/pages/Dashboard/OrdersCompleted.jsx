@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
  
 const OrdersCompleted = () => {
   const completedOrders = [
@@ -65,9 +67,15 @@ const OrdersCompleted = () => {
                   {order.total}
                 </td>
                 <td className="px-6 py-4 text-sm  text-white">{order.date}</td>
+                <Link to={`/dashboard/order-pending/order/${order.id}`}>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">
+                      Details
+                    </button>
+                  </Link>
               </tr>
             ))}
           </tbody>
+   
         </table>
       </div>
     </div>

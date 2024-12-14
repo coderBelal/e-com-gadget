@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "./context/CartContext";
 import { useNotification } from "./context/NotificationContext";
 import { IoIosArrowForward } from "react-icons/io";
-
+import { TiShoppingCart } from "react-icons/ti";
 const Product = () => {
   const products = [
     {
@@ -136,6 +136,9 @@ const Product = () => {
                   <span className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
                     <IoIosArrowForward size={20} className="text-white" />
                   </span>
+                </button>
+                <button className="px-4  lg:hidden  py-2 gradient-bg text-white  text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105   items-center justify-center gap-2 relative">
+                 <TiShoppingCart size={20} />
                 </button>
               </Link>
             </div>
