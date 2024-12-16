@@ -47,24 +47,71 @@ body{
   0% {
     opacity: 0;
     transform: translateX(-50%) translateY(20px);
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+    animation: fadeInOut 3s ease-out;
   }
-  20% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+  
+  .notification.error {
+    background-color: #f44336;
   }
-  80% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+  .glow-animation {
+    animation: glow 1.5s infinite;
   }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(72, 199, 116, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(72, 199, 116, 1);
+    }
   }
-}
+
+  }}
 
 
 
 
+
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+    20% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    80% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .notification {
+      width: 85%;  
+      left: 150px; 
+      transform: translateX(0);  
+      border-radius: 0;  
+    }
+  }
+  
 /* For Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
   width: 7px; /* Width of the scrollbar */

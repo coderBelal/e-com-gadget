@@ -1,3 +1,7 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Autoplay } from "swiper/modules";
 import {
   AiOutlineTablet,
   AiOutlineLaptop,
@@ -28,26 +32,41 @@ const FeaturedCategories = () => {
         Get your desired product from our featured categories
       </p>
 
-      {/* Categories Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+      {/* Swiper Carousel */}
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={3}  
+        breakpoints={{
+          640: { slidesPerView: 3 }, 
+          1024: { slidesPerView: 5 },
+        }}
+        autoplay={{
+          delay: 2000,  
+          disableOnInteraction: false,  
+        }}
+        modules={[Autoplay]}
+        className="mySwiper"
+      >
         {categories.map((category, index) => (
-          <Link to={`/${category.link}`} key={index}>
-            <div
-              data-aos="zoom-in"
-              className="flex flex-col items-center justify-center group h-28 w-40 border border-[#1C212A] shadow-md hover:shadow-lg p-4 text-white bg-[#0C111A] rounded-lg transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-[#1C212A] to-[#0F141D]"
-            >
-              {/* Icon */}
-              <span className="transition-transform duration-300 ease-in-out group-hover:scale-125 text-[#A1A9B7]">
-                {category.icon}
-              </span>
-              {/* Name */}
-              <p className="mt-2 text-center text-xs font-medium group-hover:text-gray-100">
-                {category.name}
-              </p>
-            </div>
-          </Link>
+          <SwiperSlide key={index}>
+            <Link to={`/${category.link}`}>
+              <div
+                data-aos="zoom-in"
+                className="flex flex-col items-center justify-center group h-28 w-full border border-[#1C212A] shadow-md hover:shadow-lg p-4 text-white bg-[#0C111A] rounded-lg transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-[#1C212A] to-[#0F141D]"
+              >
+                {/* Icon */}
+                <span className="transition-transform duration-300 ease-in-out group-hover:scale-125 text-[#A1A9B7]">
+                  {category.icon}
+                </span>
+                {/* Name */}
+                <p className="mt-2 text-center text-xs font-medium group-hover:text-gray-100">
+                  {category.name}
+                </p>
+              </div>
+            </Link>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 };

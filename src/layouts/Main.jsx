@@ -3,6 +3,7 @@ import TopNavbar from '../components/Navbar/TopNavbar';
 import BottomNav from '../components/Navbar/BottomNavbar';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
+import WhatsAppButton from '../components/pages/WhatsAppButton';
 
 const Main = () => {
     return (
@@ -11,6 +12,7 @@ const Main = () => {
             <BottomNav/>
             <Outlet/>
             <Footer/>
+            <WhatsAppButton/>
         </div>
     );
 };

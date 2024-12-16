@@ -8,6 +8,7 @@ import AOS from 'aos';
  ;
 import { router } from "./routes.jsx/routes";
  
+ 
 const App = () => {
  useEffect(() => {
     AOS.init({
@@ -20,6 +21,7 @@ const App = () => {
  
   <div className="  overflow-x-hidden">
     <RouterProvider router={router} />
+ 
   </div>
 
   );

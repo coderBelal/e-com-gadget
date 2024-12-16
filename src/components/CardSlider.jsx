@@ -6,6 +6,8 @@ import { CartContext } from "./context/CartContext";
 import { useNotification } from "./context/NotificationContext";
 import { IoIosArrowForward } from 'react-icons/io';
 import { TiShoppingCart } from "react-icons/ti";
+import CartSidebar from "./pages/CartSidebar";
+import { useState } from "react";
 const ProductList = () => {
   const products = [
     {
@@ -93,11 +95,16 @@ const ProductList = () => {
       productListRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   };
+  const [isCartOpen, setIsCartOpen] =  useState(false);
+
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
   const { addToCart } = useContext(CartContext);
   const { showNotification } = useNotification();
   const handleAddToCart = (product) => {
     addToCart(product); // Add product to the cart
     showNotification(`${product.title} has been added to your cart!`);
+    openCart()
   };
   return (
     
@@ -146,6 +153,7 @@ const ProductList = () => {
           </Link>
           <div
             onClick={() => handleAddToCart(product)}
+   
             className="absolute top-2 right-2 transition-transform duration-300 ease-in-out group-hover:scale-105 gradient-bg p-2 rounded-full shadow-md"
           >
             <FaShoppingCart className="text-white shadow-lg" size={20} />
@@ -174,6 +182,7 @@ const ProductList = () => {
       </div>
     ))}
   </div>
+  <CartSidebar isOpen={isCartOpen} closeSidebar={closeCart}   />
 </div>
   );
 };

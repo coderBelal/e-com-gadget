@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContext } from "./context/CartContext";
 import { useNotification } from "./context/NotificationContext";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
+import CartSidebar from "./pages/CartSidebar";
 const Product = () => {
   const products = [
     {
@@ -81,9 +82,15 @@ const Product = () => {
 
   const { addToCart } = useContext(CartContext);
   const { showNotification } = useNotification();
+   const [isCartOpen, setIsCartOpen] =   useState(false);
+  
+    const openCart = () => setIsCartOpen(true);
+    const closeCart = () => setIsCartOpen(false);
+ 
   const handleAddToCart = (product) => {
     addToCart(product); // Add product to the cart
     showNotification(`${product.title} has been added to your cart!`);
+    openCart()
   };
 
   return (
@@ -131,7 +138,7 @@ const Product = () => {
               </p>
 
               <Link to={`/checkout`}>
-                <button className="px-4 py-2 gradient-bg text-white  text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 relative">
+                <button className="px-4 hidden  py-2 gradient-bg text-white  text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 lg:flex items-center justify-center gap-2 relative">
                   Buy Now
                   <span className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
                     <IoIosArrowForward size={20} className="text-white" />
@@ -145,6 +152,7 @@ const Product = () => {
           </div>
         ))}
       </div>
+      <CartSidebar isOpen={isCartOpen} closeSidebar={closeCart}   />
     </div>
   );
 };

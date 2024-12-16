@@ -35,16 +35,21 @@ import OrderCancel from "../components/pages/Dashboard/OrderCancel";
 import ProcessingOrder from "../components/pages/Dashboard/ProcessingOrder";
 import OrderDetails from "../components/pages/Dashboard/OrderDetails";
 import { elements } from "chart.js";
+
 import LoginPage from "../auth/LoginPage";
 import AdminLogin from "../auth/Admin/AdminLogin";
 import SubcategoryManager from "../components/pages/Dashboard/SubCategoriesManagement";
 import BrandManagement from "../components/pages/Dashboard/BrandManagement";
 import ProductManagment from "../components/pages/Dashboard/ProductManagment";
 
+import Compare from "../components/pages/Compare";
+import ErrorPage from "../components/pages/ErrorPage";
+ 
+
 export const router = createBrowserRouter([ 
     { 
     path: "/", 
-    element: <Main/>,
+    element: <Main/>, 
     // errorElement: <CommingSoon />, 
     children: [
         {
@@ -111,6 +116,14 @@ export const router = createBrowserRouter([
         {
             path:"/login",
             element:<LoginPage/>
+        },
+{
+            path:"/compare",
+            element:<Compare/>
+        },
+        {
+            path:"*",
+            element:<ErrorPage/>
         },
 
         {
