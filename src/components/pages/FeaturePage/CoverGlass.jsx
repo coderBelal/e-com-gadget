@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { CartContext } from "../../context/CartContext";
 import { useNotification } from "../../context/NotificationContext";
+import CartSidebar from "../CartSidebar";
  
 
 export const  CoverGlass= () => {
@@ -188,8 +189,13 @@ export const  CoverGlass= () => {
     const handleAddToCart = (product) => {
       addToCart(product);
       showNotification(`${product.title} has been added to your cart!`);
+      openCart()
     };
+    const [isCartOpen, setIsCartOpen] =   useState(false);
   
+    const openCart = () => setIsCartOpen(true);
+    const closeCart = () => setIsCartOpen(false);
+ 
     const filteredProducts = products.filter((product) => {
       const inPriceRange =
         product.price >= priceRange.min && product.price <= priceRange.max;
@@ -367,6 +373,7 @@ export const  CoverGlass= () => {
         ))}
       </div>
     </div>
+    <CartSidebar isOpen={isCartOpen} closeSidebar={closeCart}   />
   </div>
   )
 }

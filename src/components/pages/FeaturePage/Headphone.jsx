@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { CartContext } from "../../context/CartContext";
 import { useNotification } from "../../context/NotificationContext";
+import CartSidebar from "../CartSidebar";
  
 
 export const   Headphones= () => {
@@ -17,7 +18,11 @@ export const   Headphones= () => {
   
     const { addToCart } = useContext(CartContext);
     const { showNotification } =  useNotification()
+    const [isCartOpen, setIsCartOpen] =   useState(false);
   
+    const openCart = () => setIsCartOpen(true);
+    const closeCart = () => setIsCartOpen(false);
+ 
     const products = [
       {
           id: 1,
@@ -188,6 +193,7 @@ export const   Headphones= () => {
     const handleAddToCart = (product) => {
       addToCart(product);
       showNotification(`${product.title} has been added to your cart!`);
+      openCart()
     };
   
     const filteredProducts = products.filter((product) => {
@@ -367,6 +373,7 @@ export const   Headphones= () => {
         ))}
       </div>
     </div>
+    <CartSidebar isOpen={isCartOpen} closeSidebar={closeCart}   />
   </div>
   )
 }

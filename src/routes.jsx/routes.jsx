@@ -35,11 +35,14 @@ import OrderCancel from "../components/pages/Dashboard/OrderCancel";
 import ProcessingOrder from "../components/pages/Dashboard/ProcessingOrder";
 import OrderDetails from "../components/pages/Dashboard/OrderDetails";
 import { elements } from "chart.js";
+import Compare from "../components/pages/Compare";
+import ErrorPage from "../components/pages/ErrorPage";
+ 
 
 export const router = createBrowserRouter([ 
     { 
     path: "/", 
-    element: <Main/>,
+    element: <Main/>, 
     // errorElement: <CommingSoon />, 
     children: [
         {
@@ -102,6 +105,14 @@ export const router = createBrowserRouter([
         {
             path:"/cover-glass",
             element:<CoverGlass/>
+        },
+        {
+            path:"/compare",
+            element:<Compare/>
+        },
+        {
+            path:"*",
+            element:<ErrorPage/>
         }
 
     ] 
