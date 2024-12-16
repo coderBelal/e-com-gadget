@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const TimeSelector = () => {
+const TimeSelector = ({availableTimes , onTimeChange}) => {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
   const [currentBangladeshTime, setCurrentBangladeshTime] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-
+console.log(date)
+console.log(time)
   useEffect(() => {
     // Get the current time in Bangladesh (GMT+6)
     const date = new Date();

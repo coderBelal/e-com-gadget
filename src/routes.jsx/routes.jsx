@@ -35,6 +35,11 @@ import OrderCancel from "../components/pages/Dashboard/OrderCancel";
 import ProcessingOrder from "../components/pages/Dashboard/ProcessingOrder";
 import OrderDetails from "../components/pages/Dashboard/OrderDetails";
 import { elements } from "chart.js";
+import LoginPage from "../auth/LoginPage";
+import AdminLogin from "../auth/Admin/AdminLogin";
+import SubcategoryManager from "../components/pages/Dashboard/SubCategoriesManagement";
+import BrandManagement from "../components/pages/Dashboard/BrandManagement";
+import ProductManagment from "../components/pages/Dashboard/ProductManagment";
 
 export const router = createBrowserRouter([ 
     { 
@@ -102,8 +107,16 @@ export const router = createBrowserRouter([
         {
             path:"/cover-glass",
             element:<CoverGlass/>
-        }
+        },
+        {
+            path:"/login",
+            element:<LoginPage/>
+        },
 
+        {
+            path: "/admin-login",
+            element: <AdminLogin/>
+        },
     ] 
     }, 
 
@@ -115,6 +128,9 @@ export const router = createBrowserRouter([
                 path: "/dashboard",
                 element: <DashboardOverview/>
             },
+
+           
+           
             {
                 path: "/dashboard/users",
                 element: <UserManagement />,
@@ -152,6 +168,19 @@ export const router = createBrowserRouter([
                 path: "/dashboard/reports",
                 element: <Reports />,
             },
+            {
+                path: "/dashboard/subcategoryManager",
+                element: <SubcategoryManager />,
+            },
+            {
+                path: "/dashboard/productManager",
+                element: <ProductManagment />,
+            },
+            {
+                path: "/dashboard/brand",
+                element: <BrandManagement />,
+            },
+            
             {
                 path: "/dashboard/categories",
                 element: <CategoriesManagement />,

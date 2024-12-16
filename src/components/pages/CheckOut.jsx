@@ -5,10 +5,10 @@ import TimeSelector from "./TimeSelector";
 
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("cod");
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null); // For storing the date
+  const [selectedTime, setSelectedTime] = useState(null); // For storing the time
   const { productId } = useParams();
 
-  // Get current time and calculate the next 6 hours
   const getCurrentTime = () => {
     const now = new Date();
     return now;
@@ -24,23 +24,33 @@ const CheckoutPage = () => {
     return availableTimes;
   };
 
+  const handleTimeChange = (time) => {
+    const date = time.toISOString().split("T")[0]; // Extracting date
+    const timeString = time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); // Extracting time
+    console.log("date",date)
+    console.log("timeString",timeString)
+    setSelectedDate(date);
+    setSelectedTime(timeString);
+  };
+
+  const formattedTime = (time) => {
+    return time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+
+  useEffect(() => {
+    console.log("Selected Date:", selectedDate);
+    console.log("Selected Time:", selectedTime);
+  }, [selectedDate, selectedTime]);
+
   const products = [
     { id: 1, title: 'iPhone 15 Plus', description: 'The latest iPhone with advanced features and a stunning design.', price: 30000, image: 'https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg' },
     // Other products...
   ];
 
   const product = products.find((p) => p.id === parseInt(productId));
-
   const availableTimes = getAvailableTimes();
-
-  const handleTimeChange = (time) => {
-    setSelectedTime(time);
-  };
-
-  const formattedTime = (time) => {
-    return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
-
+  console.log("Selected Date:", selectedDate);
+  console.log("Selected Time:", selectedTime);
   return (
     <div className="min-h-screen p-6 flex flex-col items-center text-white">
       <div className="max-w-4xl mt-24 w-full p-6 rounded-lg shadow-md">
@@ -103,7 +113,7 @@ const CheckoutPage = () => {
                 ></textarea>
               </div>
 
-              <TimeSelector/>
+              <TimeSelector availableTimes={availableTimes} onTimeChange={handleTimeChange} />
 
               <div className="flex items-center space-x-2">
                 <input type="checkbox" id="terms" />
@@ -135,22 +145,22 @@ const CheckoutPage = () => {
                 <p className="text-sm text-gray-400">The latest iPhone with advanced features and a stunning design.</p>
               </div>
             </div>
-            
+
             <div className="flex justify-between mb-2">
               <span className="text-sm">Price</span>
               <span>30000 TK</span>
             </div>
-            
+
             <div className="flex justify-between mb-2">
               <span className="text-sm">Delivery Charge</span>
               <span>Will be added</span>
             </div>
-            
+
             <div className="flex justify-between font-semibold text-lg">
               <span>Total</span>
               <span>BDT 103500</span>
             </div>
-            
+
             <button className="mt-4 gradient-bg w-full py-2 rounded-md hover:bg-green-600">
               Confirm Order
             </button>

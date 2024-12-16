@@ -31,7 +31,7 @@ body{
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #101623;
   color: white;
   border-radius: 5px;
   font-weight: bold;
@@ -60,4 +60,26 @@ body{
     opacity: 0;
     transform: translateX(-50%) translateY(20px);
   }
+}
+
+
+
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #101623; /* Color of the scrollbar thumb */
+  border-radius: 7px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #470547; /* Darker color on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Color of the scrollbar track */
+  border-radius: 7px; /* Rounded corners for the track */
 }
