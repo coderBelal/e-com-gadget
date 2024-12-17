@@ -1,6 +1,6 @@
   
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import RelatedProduct from './RelatedProduct';
 
 const ProductDetail = () => {
@@ -254,6 +254,9 @@ const ProductDetail = () => {
               </svg>
               <span className="ml-1  text-white">4.5 (120 reviews)</span>
             </div>
+               <Link to="/compare">
+               <div className='  text-white   text-lg    font-semibold  '>Compare </div></Link>
+       
             </div>
             <p className=" text-gray-200 text-[15px] mb-7 mt-3">SKU: WH1000XM4</p>
             <div className='  flex flex-col lg:flex-row md:gird md:grid-cols-2 gap-5'>
