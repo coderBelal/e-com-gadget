@@ -1,10 +1,11 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaHome, FaUser, FaCar, FaMotorcycle, FaDollarSign, FaChartLine, FaCog, FaSignOutAlt, FaLock, FaUnlock, FaUserCircle, FaTachometerAlt, FaUsers, FaBox, FaExchangeAlt, FaTags, FaChartBar, FaPen, FaBell, FaMoneyBillWave, FaHeadset, FaHourglassStart, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { FaHome,  FaCog, FaSignOutAlt, FaLock, FaUnlock, FaUserCircle, FaTachometerAlt, FaUsers, FaBox, FaExchangeAlt, FaTags, FaChartBar, FaPen, FaBell, FaMoneyBillWave, FaHeadset, FaHourglassStart, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { logout } from "../store/actions/userLogout";
 import { useDispatch, useSelector } from "react-redux";
-
+import { RiMenuFold4Fill , RiMenuFold3Fill } from "react-icons/ri";
+import { LogOut } from "lucide-react";
 const sidebarVariants = {
   collapsed: { width: "70px", transition: { duration: 0.3 } },
   expanded: { width: "220px", transition: { duration: 0.3 } },
@@ -20,6 +21,17 @@ const SidebarItem = ({ label, Icon, isCollapsed, to, onClick }) => (
   >
     <Icon className="text-gray-400 scale-75" size={24} />
     <span className={`text-gray-300 font-medium ${isCollapsed ? "hidden" : "block"}`}>{label}</span>
+  </Link>
+);
+
+const SidebarMobilItem = ({ label, Icon,  to, onClick }) => (
+  <Link
+    to={to}
+    className={`flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md hover:bg-gray-800 transition-all duration-300  justify-start `}
+    onClick={onClick}  // Add onClick to handle dropdown toggle
+  >
+    <Icon className="text-gray-400 scale-75" size={24} />
+    <span className={`text-gray-300 font-medium `}>{label}</span>
   </Link>
 );
 
@@ -48,7 +60,23 @@ const Dashboard = () => {
     setIsOrderOpen(!isOrderOpen);  // Toggle the dropdown visibility
   };
 
-const navigate = useNavigate()
+
+  ///// Mobile/////
+  const [isOpenMobil, setIsOpenMobil] = useState(false);
+
+  // Sidebar toggle function
+  const toggleMobilSidebar = () => {
+    setIsOpenMobil(!isOpenMobil);
+  };
+
+  // Close sidebar on outside click
+  const handleClose = (e) => {
+    if (e.target.id === "overlay") {
+      setIsOpenMobil(false);
+    }
+  };
+
+ const navigate = useNavigate()
   const userState = useSelector((state) => state.user);
   const userId = userState?.userInfo?.data?.user?._id;
   console.log(userState)
@@ -56,6 +84,7 @@ const navigate = useNavigate()
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
  
+
 const location = useLocation()
   // Ensure hooks are not conditionally used
   useEffect(() => {
@@ -97,7 +126,10 @@ const location = useLocation()
     return null;
   }
   return (
-    <div className="flex p-5 gap-5">
+
+    <div>
+    {/* Desktop & large Device */}
+    <div className="lg:flex hidden p-5 gap-5">
       {/* Sidebar */}
       <motion.div
         className="bg-[#101623] shadow-sm  z-[1000] p-1 overflow-y-scroll rounded-lg flex flex-col gap-2 overflow-hidden h-full fixed left-0 top-0 bottom-0"
@@ -191,6 +223,119 @@ const location = useLocation()
         <div className="bg-[#101623] py-5 px-5 shadow-sm rounded-lg">
           <Outlet />
         </div>
+      </div>
+    </div> 
+    
+    
+    
+     <div className="lg:hidden block">
+     <div>
+      {/* Menu Button */}
+      <div className="w-full flex justify-between items-center gap-2 px-2 py-2 bg-[#101623] mb-2">
+      <button
+        onClick={toggleMobilSidebar}
+        className="p-2 bg-blue-600 text-white rounded-md"
+      >
+       <RiMenuFold3Fill />
+      </button>
+      <h2 className="text-white">Admin Dashboard</h2>
+      <div onClick={LogOut}>
+        <LogOut color="#ffffff"></LogOut>
+      </div>
+      </div>
+    
+
+      {/* Sidebar Overlay */}
+      {isOpenMobil && (
+        <div
+          id="overlay"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={handleClose}
+        ></div>
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full w-[70%] overflow-y-auto bg-white/10 backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out ${
+          isOpenMobil ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-4">
+          {/* Close Button */}
+          <button
+            onClick={toggleMobilSidebar}
+            className="p-2 bg-red-500 text-white rounded-md flex justify-end"
+          >
+            <RiMenuFold4Fill />
+          </button>
+          {/* Sidebar Content */}
+          <ul className="mt-5 space-y-4 ">
+             {/* Sidebar Items */}
+        <SidebarMobilItem label="Dashboard" Icon={FaTachometerAlt} onClick={toggleMobilSidebar} to="/dashboard" />
+        <SidebarMobilItem label="Users" Icon={FaUsers} onClick={toggleMobilSidebar} to="/dashboard/users" />
+
+      
+          <div>
+            <SidebarMobilItem 
+              label="Order" 
+              Icon={FaBox} 
+             
+              to="" 
+              onClick={toggleOrderDropdown}  // Trigger toggle
+            />
+            {isOrderOpen && (  // Show dropdown if order is open
+              <div className="ml-5">
+                <SidebarMobilItem label="Order Pending" Icon={FaHourglassStart} onClick={toggleMobilSidebar} to="/dashboard/order-pending" />
+                <SidebarMobilItem label="Order Completed" Icon={FaCheckCircle} onClick={toggleMobilSidebar} to="/dashboard/order-completed" />
+                <SidebarMobilItem label="Order Processing" Icon={FaCog} onClick={toggleMobilSidebar} to="/dashboard/order-processing" />
+                <SidebarMobilItem label="Order Cancel" Icon={FaTimesCircle} onClick={toggleMobilSidebar} to="/dashboard/order-cancel" />
+              </div>
+            )}
+          </div>
+
+
+          <div>
+            <SidebarMobilItem 
+              label="Products" 
+              Icon={FaBox} 
+              
+              to="" 
+              onClick={toggleProductDropdown}  // Trigger toggle
+            />
+            {isProductOpen && (  // Show dropdown if order is open
+              <div className="ml-5">
+              <SidebarMobilItem label="Categories" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/categories" />
+              <SidebarMobilItem label="subcategory" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/subcategoryManager" />
+              <SidebarMobilItem label="brand" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/brand" />
+              <SidebarMobilItem label="product" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/productManager" />
+              </div>
+            )}
+          </div>
+ 
+
+
+
+        <SidebarMobilItem label="Transactions" Icon={FaExchangeAlt} onClick={toggleMobilSidebar} to="/dashboard/transactions" />
+       
+        <SidebarMobilItem label="Analytics" Icon={FaChartBar} onClick={toggleMobilSidebar} to="/dashboard/analytics" />
+        <SidebarMobilItem label="Order Tracking" Icon={FaPen} onClick={toggleMobilSidebar} to="/dashboard/order-tracking" />
+        <SidebarMobilItem label="CourierCheck" Icon={FaBell} onClick={toggleMobilSidebar} to="/dashboard/courier-check" />
+        <SidebarMobilItem label="Payments" Icon={FaMoneyBillWave} onClick={toggleMobilSidebar} to="/dashboard/payments" />
+        <SidebarMobilItem label="Support" Icon={FaHeadset} onClick={toggleMobilSidebar} to="/dashboard/support" />
+        <SidebarMobilItem label="Settings" Icon={FaCog} onClick={toggleMobilSidebar} to="/dashboard/settings" />
+        <SidebarMobilItem label="Logout" Icon={FaSignOutAlt} onClick={toggleMobilSidebar} to="/dashboard/logout" />
+          </ul>
+        </div>
+      </div>
+
+   
+        <div className="bg-[#101623] py-5 px-5 shadow-sm rounded-lg">
+          <Outlet />
+        </div>
+    
+   
+    </div>
+  
       </div>
     </div>
   );

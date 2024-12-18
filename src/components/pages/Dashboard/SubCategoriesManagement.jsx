@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const SubcategoryManager = () => {
   const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
   const [subcategoriesById, setSubcategoriesById] = useState([]);
   const [categoryId, setCategoryId] = useState("");
-  const [subcategoryName, setSubcategoryName] = useState("");
-  const [subcategoryDescription, setSubcategoryDescription] = useState("");
+  const [formData, setFormData] = useState({ name: "", description: "" });
   const [editingSubcategory, setEditingSubcategory] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Fetch categories
   useEffect(() => {
@@ -16,95 +17,85 @@ const SubcategoryManager = () => {
   }, []);
 
   const fetchCategories = async () => {
+    setLoading(true);
+    setError("");
     try {
-      const response = await axios.get("http://localhost:3000/api/v4/category");
+      const response = await axios.get("https://gadgets-server.vercel.app/api/v4/category");
       setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
+    } catch (err) {
+      setError("Error fetching categories");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Fetch subcategories based on selected category
+  // Fetch subcategories based on category
   useEffect(() => {
-    if (categoryId) {
-        fetchSubcategoriesById();
-    }
+    if (categoryId) fetchSubcategoriesById();
   }, [categoryId]);
 
   const fetchSubcategoriesById = async () => {
+    setLoading(true);
+    setError("");
     try {
-      const response = await axios.get(`http://localhost:3000/api/v4/subCategory/${categoryId}`);
-      setSubcategoriesById(response.data);
-    } catch (error) {
-      console.error("Error fetching subcategories:", error);
+      const response = await axios.get(
+        `https://gadgets-server.vercel.app/api/v4/subCategory/category/${categoryId}`
+      );
+      console.log(response)
+      setSubcategoriesById(response.data.data);
+    } catch (err) {
+      setError("Error fetching subcategories");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Define the fetchSubcategories function
-  const fetchSubcategories = async () => {
+  const handleCreateOrUpdate = async () => {
+    if (!categoryId || !formData.name.trim() ) {
+      toast.error("Please fill in the Name fields.");
+      return;
+    }
+    setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/api/v4/subcategory");
-      if (Array.isArray(response.data)) {
-        setSubcategories(response.data);
+      if (editingSubcategory) {
+        await axios.put(
+          `https://gadgets-server.vercel.app/api/v4/subcategory/${editingSubcategory._id}`,
+          formData
+        );
+        toast.success("sub Category edited")
       } else {
-        console.error("Expected array but got:", response.data);
+        await axios.post(`https://gadgets-server.vercel.app/api/v4/subcategory/${categoryId}`, {
+          ...formData,
+          category: categoryId,
+        });
+        toast.success("sub Category Created")
       }
-    } catch (error) {
-      console.error("Error fetching subcategories:", error);
+      fetchSubcategoriesById();
+      toast.success("sub Category Updated")
+      resetForm();
+    } catch (err) {
+      setError("Error saving subcategory.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Use useEffect to fetch subcategories when the component mounts
-  useEffect(() => {
-    fetchSubcategories();
-  }, []);
-
-  const handleCreateSubcategory = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/api/v4/subcategory", {
-        category: categoryId,
-        name: subcategoryName,
-        description: subcategoryDescription,
-      });
-      setSubcategories((prevSubcategories) => [...prevSubcategories, response.data]);
-      setSubcategoryName(""); // Clear the input fields after success
-      setSubcategoryDescription("");
-    } catch (error) {
-      console.error("Error creating subcategory:", error);
-    }
-  };
-
-  // Update subcategory
-  const handleUpdateSubcategory = async () => {
-    if (!editingSubcategory || !subcategoryName.trim()) return;
-
-    try {
-      const response = await axios.put(
-        `http://localhost:3000/api/v4/subcategory/${editingSubcategory._id}`,
-        {
-          name: subcategoryName,
-          description: subcategoryDescription,
-        }
-      );
-      setSubcategories(
-        subcategories.map((sub) => (sub._id === editingSubcategory._id ? response.data : sub))
-      );
-      setEditingSubcategory(null);
-      setSubcategoryName("");
-      setSubcategoryDescription("");
-    } catch (error) {
-      console.error("Error updating subcategory:", error);
-    }
-  };
-
-  // Delete subcategory
   const handleDeleteSubcategory = async (id) => {
+    if (!window.confirm("Are you sure?")) return;
+    setLoading(true);
     try {
-      await axios.delete(`http://localhost:3000/api/v4/subCategory/${id}`);
-      setSubcategories(subcategories.filter((sub) => sub._id !== id));
-    } catch (error) {
-      console.error("Error deleting subcategory:", error);
+      await axios.delete(`https://gadgets-server.vercel.app/api/v4/subCategory/${id}`);
+      fetchSubcategoriesById();
+    } catch (err) {
+      setError("Error deleting subcategory.");
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const resetForm = () => {
+    setFormData({ name: "", description: "" });
+    setEditingSubcategory(null);
   };
 
   return (
@@ -112,10 +103,14 @@ const SubcategoryManager = () => {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-6">Subcategory Manager</h1>
 
-        {/* Category Selection and Subcategory Actions */}
-        <div className="bg-[#101623] p-6 rounded-lg shadow-md">
+        {/* Error and Loading */}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {loading && <p className="text-blue-400 mb-4">Loading...</p>}
+
+        {/* Category Selection */}
+        <div className="bg-[#101623] p-6 rounded-lg shadow-md mb-6">
           <select
-            className="w-full p-3 mb-4 rounded-lg bg-[#101623] text-gray-50 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full p-3 mb-4 rounded-lg bg-[#101623] text-gray-50 border border-gray-700 focus:outline-none"
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value)}
           >
@@ -127,100 +122,72 @@ const SubcategoryManager = () => {
             ))}
           </select>
 
+          {/* Input Fields */}
           {categoryId && (
             <>
               <input
                 type="text"
-                className="w-full p-3 mb-4 rounded-lg bg-[#101623] text-gray-50 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                placeholder="Enter subcategory name"
-                value={subcategoryName}
-                onChange={(e) => setSubcategoryName(e.target.value)}
+                placeholder="Subcategory Name"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="w-full p-3 mb-4 rounded-lg bg-[#101623] border-gray-700"
               />
               <textarea
-                className="w-full p-3 mb-4 rounded-lg bg-[#101623] text-gray-50 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                placeholder="Enter subcategory description"
-                value={subcategoryDescription}
-                onChange={(e) => setSubcategoryDescription(e.target.value)}
+                placeholder="Subcategory Description"
+                value={formData.description}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
+                className="w-full p-3 mb-4 rounded-lg bg-[#101623] border-gray-700"
               ></textarea>
-              {editingSubcategory ? (
-                <button
-                  onClick={handleUpdateSubcategory}
-                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-bold"
-                >
-                  Update Subcategory
-                </button>
-              ) : (
-                <button
-                  onClick={handleCreateSubcategory}
-                  className="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white font-bold"
-                >
-                  Add Subcategory
-                </button>
-              )}
+
+              <button
+                onClick={handleCreateOrUpdate}
+                disabled={loading}
+                className={`w-full py-3 rounded-lg font-bold text-white ${
+                  editingSubcategory
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-green-600 hover:bg-green-700"
+                }`}
+              >
+                {editingSubcategory ? "Update Subcategory" : "Add Subcategory"}
+              </button>
             </>
           )}
         </div>
 
-        {/* Subcategory List */}
-        <div className="mt-6 bg-[#101623] p-6 rounded-lg shadow-md">
+        {/* Subcategories List */}
+        <div className="bg-[#101623] p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">Subcategories</h2>
-          {subcategories?.length === 0 ? (
-            <p className="text-gray-400">No subcategories found.</p>
+          {subcategoriesById?.length === 0 ? (
+            <p className="text-gray-400">No subcategories available.</p>
           ) : (
             <ul className="space-y-4">
-              {subcategories?.map((subcategory) => (
-                <li key={subcategory._id} className="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
+              {subcategoriesById?.map((sub) => (
+                <li
+                  key={sub._id}
+                  className="flex justify-between items-center bg-gray-800 p-4 rounded-lg"
+                >
                   <div>
-                    <p>{subcategory.name}</p>
-                    {subcategory.description && <p className="text-gray-400">{subcategory.description}</p>}
+                    <p>{sub.name}</p>
+                    {sub.description && (
+                      <p className="text-gray-400">{sub.description}</p>
+                    )}
                   </div>
                   <div className="space-x-4">
                     <button
                       onClick={() => {
-                        setEditingSubcategory(subcategory);
-                        setSubcategoryName(subcategory.name);
-                        setSubcategoryDescription(subcategory.description);
+                        setEditingSubcategory(sub);
+                        setFormData({ name: sub.name, description: sub.description });
                       }}
                       className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white"
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDeleteSubcategory(subcategory._id)}
-                      className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-
-
-{subcategoriesById?.length === 0 ? (
-            <p className="text-gray-400">No Selected subcategories found.</p>
-          ) : (
-            <ul className="space-y-4">
-              {subcategoriesById?.map((subcategory) => (
-                <li key={subcategory._id} className="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-                  <div>
-                    <p>{subcategory.name}</p>
-                    {subcategory.description && <p className="text-gray-400">{subcategory.description}</p>}
-                  </div>
-                  <div className="space-x-4">
-                    <button
-                      onClick={() => {
-                        setEditingSubcategory(subcategory);
-                        setSubcategoryName(subcategory.name);
-                        setSubcategoryDescription(subcategory.description);
-                      }}
-                      className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDeleteSubcategory(subcategory._id)}
+                      onClick={() => handleDeleteSubcategory(sub._id)}
                       className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white"
                     >
                       Delete

@@ -11,13 +11,13 @@ const ProductManagment = () => {
   const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v4/products").then((response) => {
+    axios.get("https://gadgets-server.vercel.app/api/v4/products").then((response) => {
       setProducts(response.data);
     });
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/api/v4/products/${id}`).then(() => {
+    axios.delete(`https://gadgets-server.vercel.app/api/v4/products/${id}`).then(() => {
       setProducts(products.filter((product) => product._id !== id));
     });
   };

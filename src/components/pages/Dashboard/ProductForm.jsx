@@ -17,10 +17,10 @@ const ProductForm = ({ productId, setProducts }) => {
   const [categoryId, setCategoryId] = useState(null);
 console.log(categories)
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v4/category").then((response) => setCategories(response.data));
+    axios.get("https://gadgets-server.vercel.app/api/v4/category").then((response) => setCategories(response.data));
 
     if (productId) {
-      axios.get(`http://localhost:3000/api/v4/products/${productId}`).then((response) => {
+      axios.get(`https://gadgets-server.vercel.app/api/v4/products/${productId}`).then((response) => {
         setProduct(response.data);
         setIsUpdate(true);
       });
@@ -33,7 +33,7 @@ console.log(categories)
   setCategoryId(categoryId); // categoryId স্টেট আপডেট করুন
   setProduct({ ...product, category: categoryId });
 
-  axios.get(`http://localhost:3000/api/v4/subCategory/${categoryId}`).then((response) => {
+  axios.get(`https://gadgets-server.vercel.app/api/v4/subCategory/${categoryId}`).then((response) => {
     console.log('Subcategories:', response);
     setSubcategories(response.data);
   }).catch(error => {
@@ -44,7 +44,7 @@ console.log(subcategories)
   const handleSubcategoryChange = (e) => {
     const subcategoryId = e.target.value;
     setProduct({ ...product, subcategory: subcategoryId });
-    axios.get(`http://localhost:3000/api/v4/brand/${subcategoryId}`).then((response) => {
+    axios.get(`https://gadgets-server.vercel.app/api/v4/brand/${subcategoryId}`).then((response) => {
       setBrands(response.data);
     });
   };
@@ -56,14 +56,14 @@ console.log(subcategories)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isUpdate) {
-      axios.put(`http://localhost:3000/api/v4/products/${productId}`, product).then(() => {
+      axios.put(`https://gadgets-server.vercel.app/api/v4/products/${productId}`, product).then(() => {
         alert("Product updated!");
-        axios.get("http://localhost:3000/api/v4/products").then((response) => setProducts(response.data));
+        axios.get("https://gadgets-server.vercel.app/api/v4/products").then((response) => setProducts(response.data));
       });
     } else {
-      axios.post("http://localhost:3000/api/v4/products", product).then(() => {
+      axios.post("https://gadgets-server.vercel.app/api/v4/products", product).then(() => {
         alert("Product added!");
-        axios.get("http://localhost:3000/api/v4/products").then((response) => setProducts(response.data));
+        axios.get("https://gadgets-server.vercel.app/api/v4/products").then((response) => setProducts(response.data));
       });
     }
   };

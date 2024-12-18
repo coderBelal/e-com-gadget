@@ -19,7 +19,7 @@ const CategoriesManagement = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/api/v4/category");
+            const response = await axios.get("https://gadgets-server.vercel.app/api/v4/category");
             setCategories(response.data);
         } catch (error) {
             console.error("Error fetching categories:", error);
@@ -50,7 +50,7 @@ const CategoriesManagement = () => {
         if (!uploadedImageUrl) return alert("Failed to upload image!");
 
         try {
-            const response = await axios.post("http://localhost:3000/api/v4/category", {
+            const response = await axios.post("https://gadgets-server.vercel.app/api/v4/category", {
                 name: categoryName,
                 photo: uploadedImageUrl,
             });
@@ -69,7 +69,7 @@ const CategoriesManagement = () => {
         if (photo && !uploadedImageUrl) return alert("Failed to upload image!");
 
         try {
-            const response = await axios.put(`http://localhost:3000/api/v4/category/${editingCategory._id}`, {
+            const response = await axios.put(`https://gadgets-server.vercel.app/api/v4/category/${editingCategory._id}`, {
                 name: categoryName,
                 photo: uploadedImageUrl,
             });
@@ -85,7 +85,7 @@ const CategoriesManagement = () => {
     // Delete category
     const handleDeleteCategory = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/v4/category/${id}`);
+            await axios.delete(`https://gadgets-server.vercel.app/api/v4/category/${id}`);
             setCategories(categories.filter((cat) => cat._id !== id));
         } catch (error) {
             console.error("Error deleting category:", error);

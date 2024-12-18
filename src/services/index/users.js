@@ -33,7 +33,7 @@ export const signup = async ({ name, email, password , phone, logo}) => {
 export const login = async ({ email, password }) => {
   try {
     const { data } = await axios.post(
-      `http://localhost:3000/api/v4/admin/loginAdmin`,
+      `https://gadgets-server.vercel.app/api/v4/admin/loginAdmin`,
       {
         email,
         password,
