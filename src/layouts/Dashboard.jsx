@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaHome,  FaCog, FaSignOutAlt, FaLock, FaUnlock, FaUserCircle, FaTachometerAlt, FaUsers, FaBox, FaExchangeAlt, FaTags, FaChartBar, FaPen, FaBell, FaMoneyBillWave, FaHeadset, FaHourglassStart, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { FaHome,  FaCog, FaSignOutAlt, FaLock, FaUnlock, FaUserCircle, FaTachometerAlt, FaUsers,FaBan, FaBox, FaExchangeAlt, FaTags, FaChartBar, FaPen, FaBell, FaMoneyBillWave, FaHeadset, FaHourglassStart, FaCheckCircle, FaTimesCircle,FaClock,FaSpinner, FaList, FaChevronRight, FaFilter, FaTrademark, FaShoppingBag, FaReceipt, FaRegClock } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { logout } from "../store/actions/userLogout";
 import { useDispatch, useSelector } from "react-redux";
 import { RiMenuFold4Fill , RiMenuFold3Fill } from "react-icons/ri";
@@ -11,20 +12,22 @@ const sidebarVariants = {
   expanded: { width: "220px", transition: { duration: 0.3 } },
 };
 
-const SidebarItem = ({ label, Icon, isCollapsed, to, onClick }) => (
+const SidebarItem = ({ label, Icon, isCollapsed, to, onClick, SideIcon }) => (
   <Link
     to={to}
     className={`flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md hover:bg-gray-800 transition-all duration-300 ${
       isCollapsed ? "justify-center" : ""
     }`}
-    onClick={onClick}  // Add onClick to handle dropdown toggle
+    onClick={onClick}
   >
     <Icon className="text-gray-400 scale-75" size={24} />
+
     <span className={`text-gray-300 font-medium ${isCollapsed ? "hidden" : "block"}`}>{label}</span>
+    {SideIcon && <SideIcon className="text-gray-400 scale-75" size={40} />} 
   </Link>
 );
 
-const SidebarMobilItem = ({ label, Icon,  to, onClick }) => (
+const SidebarMobilItem = ({ label, Icon,  to, onClick,SideIcon }) => (
   <Link
     to={to}
     className={`flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md hover:bg-gray-800 transition-all duration-300  justify-start `}
@@ -32,6 +35,7 @@ const SidebarMobilItem = ({ label, Icon,  to, onClick }) => (
   >
     <Icon className="text-gray-400 scale-75" size={24} />
     <span className={`text-gray-300 font-medium `}>{label}</span>
+    {SideIcon && <SideIcon className="text-gray-400 scale-75" size={40} />} 
   </Link>
 );
 
@@ -154,41 +158,43 @@ const Dashboard = () => {
         <SidebarItem label="Users" Icon={FaUsers} isCollapsed={isCollapsed} to="/dashboard/users" />
 
         {/* Order Item with Dropdown Toggle */}
-        {!isCollapsed && (  // Only show this when the sidebar is expanded
-          <div>
-            <SidebarItem 
-              label="Order" 
-              Icon={FaBox} 
-              isCollapsed={isCollapsed} 
-              to="" 
-              onClick={toggleOrderDropdown}  // Trigger toggle
-            />
-            {isOrderOpen && (  // Show dropdown if order is open
-              <div className="ml-5">
-                <SidebarItem label="Order Pending" Icon={FaHourglassStart} isCollapsed={isCollapsed} to="/dashboard/order-pending" />
-                <SidebarItem label="Order Completed" Icon={FaCheckCircle} isCollapsed={isCollapsed} to="/dashboard/order-completed" />
-                <SidebarItem label="Order Processing" Icon={FaCog} isCollapsed={isCollapsed} to="/dashboard/order-processing" />
-                <SidebarItem label="Order Cancel" Icon={FaTimesCircle} isCollapsed={isCollapsed} to="/dashboard/order-cancel" />
-              </div>
-            )}
-          </div>
-        )}
+        {!isCollapsed && (
+  <div>
+    <SidebarItem 
+      label="Order" 
+      Icon={FaReceipt} 
+      isCollapsed={isCollapsed} 
+      to="" 
+      SideIcon={IoMdArrowDropdown}  
+      onClick={toggleOrderDropdown} 
+    />
+    {isOrderOpen && ( // Only show this when the sidebar is expanded
+      <div className="ml-5">
+        <SidebarItem label="Order Pending" Icon={FaClock} isCollapsed={isCollapsed} to="/dashboard/order-pending" />
+        <SidebarItem label="Order Completed" Icon={FaCheckCircle} isCollapsed={isCollapsed} to="/dashboard/order-completed" />
+        <SidebarItem label="Order Processing" Icon={FaSpinner} isCollapsed={isCollapsed} to="/dashboard/order-processing" />
+        <SidebarItem label="Order Cancel" Icon={FaBan} isCollapsed={isCollapsed} to="/dashboard/order-cancel" />
+      </div>
+    )}
+  </div>
+)}
 
 {!isCollapsed && (  // Only show this when the sidebar is expanded
           <div>
             <SidebarItem 
               label="Products" 
-              Icon={FaBox} 
+              Icon={FaRegClock} 
               isCollapsed={isCollapsed} 
               to="" 
+              SideIcon={IoMdArrowDropdown} 
               onClick={toggleProductDropdown}  // Trigger toggle
             />
             {isProductOpen && (  // Show dropdown if order is open
               <div className="ml-5">
-              <SidebarItem label="Categories" Icon={FaTags} isCollapsed={isCollapsed} to="/dashboard/categories" />
-              <SidebarItem label="subcategory" Icon={FaTags} isCollapsed={isCollapsed} to="/dashboard/subcategoryManager" />
-              <SidebarItem label="brand" Icon={FaTags} isCollapsed={isCollapsed} to="/dashboard/brand" />
-              <SidebarItem label="product" Icon={FaTags} isCollapsed={isCollapsed} to="/dashboard/productManager" />
+              <SidebarItem label="Categories" Icon={ FaList} isCollapsed={isCollapsed} to="/dashboard/categories" />
+              <SidebarItem label="subcategory" Icon={FaFilter} isCollapsed={isCollapsed} to="/dashboard/subcategoryManager" />
+              <SidebarItem label="brand" Icon={FaTrademark} isCollapsed={isCollapsed} to="/dashboard/brand" />
+              <SidebarItem label="product" Icon={FaShoppingBag} isCollapsed={isCollapsed} to="/dashboard/productManager" />
               </div>
             )}
           </div>
@@ -273,17 +279,17 @@ const Dashboard = () => {
           <div>
             <SidebarMobilItem 
               label="Order" 
-              Icon={FaBox} 
-             
+              Icon={FaReceipt} 
+              SideIcon={IoMdArrowDropdown}  
               to="" 
               onClick={toggleOrderDropdown}  // Trigger toggle
             />
             {isOrderOpen && (  // Show dropdown if order is open
               <div className="ml-5">
-                <SidebarMobilItem label="Order Pending" Icon={FaHourglassStart} onClick={toggleMobilSidebar} to="/dashboard/order-pending" />
-                <SidebarMobilItem label="Order Completed" Icon={FaCheckCircle} onClick={toggleMobilSidebar} to="/dashboard/order-completed" />
-                <SidebarMobilItem label="Order Processing" Icon={FaCog} onClick={toggleMobilSidebar} to="/dashboard/order-processing" />
-                <SidebarMobilItem label="Order Cancel" Icon={FaTimesCircle} onClick={toggleMobilSidebar} to="/dashboard/order-cancel" />
+                <SidebarMobilItem label="Order Pending"   Icon={FaClock}  onClick={toggleMobilSidebar} to="/dashboard/order-pending" />
+                <SidebarMobilItem label="Order Completed"   Icon={FaCheckCircle}  onClick={toggleMobilSidebar} to="/dashboard/order-completed" />
+                <SidebarMobilItem label="Order Processing"   Icon={FaSpinner} onClick={toggleMobilSidebar} to="/dashboard/order-processing" />
+                <SidebarMobilItem label="Order Cancel"  Icon={FaBan}  onClick={toggleMobilSidebar} to="/dashboard/order-cancel" />
               </div>
             )}
           </div>
@@ -292,17 +298,17 @@ const Dashboard = () => {
           <div>
             <SidebarMobilItem 
               label="Products" 
-              Icon={FaBox} 
-              
+              Icon={FaRegClock} 
+              SideIcon={IoMdArrowDropdown}  
               to="" 
               onClick={toggleProductDropdown}  // Trigger toggle
             />
             {isProductOpen && (  // Show dropdown if order is open
               <div className="ml-5">
-              <SidebarMobilItem label="Categories" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/categories" />
-              <SidebarMobilItem label="subcategory" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/subcategoryManager" />
-              <SidebarMobilItem label="brand" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/brand" />
-              <SidebarMobilItem label="product" Icon={FaTags} onClick={toggleMobilSidebar} to="/dashboard/productManager" />
+              <SidebarMobilItem label="Categories"  Icon={ FaList}  onClick={toggleMobilSidebar} to="/dashboard/categories" />
+              <SidebarMobilItem label="subcategory"  Icon={FaFilter}  onClick={toggleMobilSidebar} to="/dashboard/subcategoryManager" />
+              <SidebarMobilItem label="brand" Icon={FaTrademark} onClick={toggleMobilSidebar} to="/dashboard/brand" />
+              <SidebarMobilItem label="product"  Icon={FaShoppingBag}  onClick={toggleMobilSidebar} to="/dashboard/productManager" />
               </div>
             )}
           </div>

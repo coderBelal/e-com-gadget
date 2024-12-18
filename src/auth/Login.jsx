@@ -1,6 +1,11 @@
-import React from 'react';
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+
+ 
 
 const Login = ({handleForgotPassword}) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => setIsVisible(!isVisible);
     return (
         <div>
               <form action="">
@@ -9,30 +14,41 @@ const Login = ({handleForgotPassword}) => {
                     htmlFor="name"
                     className="block gradient-text font-bold  "
                   >
-                    Name:
+                    Email:
                   </label>
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="username"
+                    placeholder="@email"
                     className="w-full border    border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
                   />
                 </div>
-                <div>
+                <div className="relative mt-2">
                   <label
                     htmlFor="email"
                     className="block gradient-text font-bold  "
                   >
-                    Email:
+                     Password:
                   </label>
                   <input
-                    type="text"
+                       type={isVisible ? 'text' : 'password'}
                     name="email"
                     id="email"
-                    placeholder="@email"
+                    placeholder="password"
                     className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600"
                   />
+                    <button
+      type="button"
+      onClick={toggleVisibility}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+    >
+      {isVisible ? (
+        <Eye color="#0B4E38" />
+      ) : (
+        <EyeOff color="#0B4E38" />
+      )}
+    </button>
                   <a
                     href="#"
                     onClick={handleForgotPassword}

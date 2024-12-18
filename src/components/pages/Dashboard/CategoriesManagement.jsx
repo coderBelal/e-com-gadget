@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
+import { FiUpload } from "react-icons/fi";
 
 const CategoriesManagement = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -110,19 +111,33 @@ const CategoriesManagement = () => {
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
                 />
-                <input
-                    type="file"
-                    accept="image/*"
-                    className="p-2 border border-gray-700 rounded bg-transparent text-gray-300 focus:outline-none"
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                />
-                <button
-                    className="p-2 bg-indigo-600 text-gray-200 rounded hover:bg-indigo-500"
-                    onClick={handleCreateCategory}
-                >
-                    <FaPlus />
-                </button>
+              <div className="relative">
+      <label
+        htmlFor="file-input"
+        className="flex items-center justify-center w-full p-3 mb-4 bg-[#101623] border border-gray-700 rounded-lg cursor-pointer text-gray-300 hover:bg-gray-800 transition-all"
+      >
+        <FiUpload className="w-5 h-5 mr-2" />
+        Upload Image
+      </label>
+      <input
+        id="file-input"
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => setPhoto(e.target.files[0])}
+      />
+    </div>
+             
             </div>
+            <div className="flex justify-center  ">
+  <button
+    className="p-2 text-center font-semibold   bg-indigo-600 text-gray-200 rounded hover:bg-indigo-500 flex items-center justify-center"
+    onClick={handleCreateCategory}
+  >
+     Add Category
+  </button>
+</div>
+
 
             {/* Search */}
             <div className="flex items-center mb-4 space-x-2">
