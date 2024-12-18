@@ -85,7 +85,6 @@ const Dashboard = () => {
   const [isAdmin, setIsAdmin] = useState(false);
  
 
-const location = useLocation()
   // Ensure hooks are not conditionally used
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -108,10 +107,6 @@ const location = useLocation()
     checkAdminStatus();
   }, [userState, navigate]);
 
-  const logoutHandler = () => {
-    dispatch(logout());
-    navigate("/");
-  };
 
 
   if (loading) {
