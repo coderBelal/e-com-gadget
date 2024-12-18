@@ -200,6 +200,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const BrandManager = () => {
   const [categories, setCategories] = useState([]);
@@ -363,15 +364,14 @@ const BrandManager = () => {
           {/* Brand Name Input */}
           {subcategoryId && (
             <>
-              <input
-                type="text"
-                placeholder="Brand Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                className="w-full p-3 mb-4 rounded-lg bg-[#101623] border-gray-700"
-              />
+           <input
+  type="text"
+  placeholder="Enter Brand Name"
+  value={formData.name}
+  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+  className="w-full p-3 mb-4 rounded-lg bg-[#101623] border border-gray-700 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+/>
+
 
               <button
                 onClick={handleCreateOrUpdateBrand}
@@ -409,15 +409,15 @@ const BrandManager = () => {
                         setEditingBrand(brand);
                         setFormData({ name: brand.name });
                       }}
-                      className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white"
+                      className="px-4 py-2    bg-indigo-700 hover:bg-yellow-600 rounded-lg text-white"
                     >
-                      Edit
+                     <FaEdit/>
                     </button>
                     <button
                       onClick={() => handleDeleteBrand(brand._id)}
                       className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white"
                     >
-                      Delete
+                     <FaTrash/>
                     </button>
                   </div>
                 </li>
