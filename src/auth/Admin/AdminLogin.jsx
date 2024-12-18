@@ -82,7 +82,7 @@ const AdminLogin = ({handleForgotPassword}) => {
                       },
                     })}
                     className={`w-full border py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600 ${
-                      errors.email ? 'border-red-500' : 'border-gray-300'
+                      errors.email ? 'border-red-500  ' : 'border-gray-300'
                     }`}
               
                   />
@@ -91,56 +91,59 @@ const AdminLogin = ({handleForgotPassword}) => {
                         {errors.email.message}
                       </p>
                     )}
-                  <a
+        
+                </div>
+
+                <div className="mb-6 relative">
+  <label htmlFor="password" className="block gradient-text font-bold">
+    Password:
+  </label>
+  <div className="relative mt-2">
+    <input
+      type={isVisible ? 'text' : 'password'}
+      id="password"
+      {...register('password', {
+        required: 'Password is required',
+        minLength: {
+          value: 6,
+          message: 'Password must be at least 6 characters',
+        },
+      })}
+      placeholder="Password"
+      className="w-full border border-gray-300 py-2 pl-3 pr-10 rounded outline-none focus:ring-indigo-600"
+    />
+    <button
+      type="button"
+      onClick={toggleVisibility}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+    >
+      {isVisible ? (
+        <Eye color="#0B4E38" />
+      ) : (
+        <EyeOff color="#0B4E38" />
+      )}
+    </button>
+  </div>
+</div>
+
+                {errors.password && (
+              <p className='text-red-500 text-xs mt-1'>
+                {errors.password.message}
+              </p>
+            )}
+                      <a
                     href="#"
                     onClick={handleForgotPassword}
                     className="   font-semibold hover:underline mt-2 inline-block text-indigo-600"
                   >
                     Forget Password
                   </a>
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="name"
-                    className="block gradient-text font-bold  "
-                  >
-                    Name:
-                  </label>
-                  <input
-                   type={isVisible ? 'text' : 'password'}
-                   id='password'
-                   {...register('password', {
-                     required: 'Password is required',
-                     minLength: {
-                       value: 6,
-                       message: 'Password must be at least 6 characters',
-                     },
-                   })}
-                   placeholder='Password'
-                   className='w-full border    border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600'
-                 />
-                 <button type='button' onClick={toggleVisibility}>
-                   {isVisible ? (
-                     <Eye color='#0B4E38' />
-                   ) : (
-                     <EyeOff color='#0B4E38' />
-                   )}
-                 </button>
-                </div>
-                {errors.password && (
-              <p className='text-red-500 text-xs mt-1'>
-                {errors.password.message}
-              </p>
-            )}
              {/* CAPTCHA */}
           <div>
             <LoadCanvasTemplate
               reloadText='Reload CAPTCHA'
               reloadColor='#0B4E38'
-              canvasProps={{
-                style: { color: 'white', backgroundColor: 'transparent' },
-              }}
+             className="bg-slate-400"
             />
             <input
               type='text'

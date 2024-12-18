@@ -1,6 +1,9 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { Eye, EyeOff } from "lucide-react";
+ 
 const SignupForm = () => {
+      const [isVisible, setIsVisible] =  useState(false);
+      const toggleVisibility = () => setIsVisible(!isVisible);
     return (
         <div className="max-w-lg mx-auto rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
         <form action="#" className="w-full flex flex-col gap-4">
@@ -42,7 +45,7 @@ const SignupForm = () => {
           </div>
 
           {/* Password */}
-          <div className="flex flex-col">
+          <div className="flex flex-col relative ">
             <label
               htmlFor="password"
               className="block gradient-text font-bold mb-2"
@@ -50,12 +53,23 @@ const SignupForm = () => {
               Password:
             </label>
             <input
-              type="password"
+           type={isVisible ? 'text' : 'password'}
               id="password"
               name="password"
               placeholder="Password"
               className="w-full border border-gray-300 py-2 pl-3 rounded outline-none focus:ring-indigo-600"
             />
+                              <button
+      type="button"
+      onClick={toggleVisibility}
+      className="absolute right-3 top-14 transform -translate-y-1/2"
+    >
+      {isVisible ? (
+        <Eye color="#0B4E38" />
+      ) : (
+        <EyeOff color="#0B4E38" />
+      )}
+    </button>
           </div>
 
           {/* Confirm Password */}
