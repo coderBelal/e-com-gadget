@@ -6,8 +6,9 @@ import {
   FaUser,
 } from "react-icons/fa";
 import PhoneNav from "./PhoneNav";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, Links } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const TopNavbar = () => {
   const products = [
@@ -50,7 +51,7 @@ const TopNavbar = () => {
   };
 
   const handleShowLogin = () => {
-    setShowSearchBar(!showSearchBar);
+    setShowLogin(!showLogin);
   };
 
   const handleClose = () => {
@@ -64,7 +65,7 @@ const TopNavbar = () => {
   const handleForgotPassword = () => {
     setShowForgotPassword(true);
   };
-
+ const {cartItems} =useContext(CartContext)
   // useEffect(() => {
   //   if (showLogin) {
   //     document.body.style.overflow = "hidden";
@@ -87,7 +88,7 @@ const TopNavbar = () => {
                 <div className="text-xl   mt-4 lg:mt-0   font-bold">
                   <Link to="/">
                     {" "}
-                    <h1 className="text-2xl ml-6">AppleGadgets</h1>
+                    <h1 className="text-2xl p-1 ml-6 border border-purple-700">GadgetandTech</h1>
                   </Link>
                 </div>
                 <div className="  mt-4 lg:mt-0  ">
@@ -142,7 +143,7 @@ const TopNavbar = () => {
                 <div className="flex items-center space-x-2">
                   <FaShoppingCart className="text-2xl" />
                   <div>
-                    <span className="block text-sm text-white">Cart(0)</span>
+                    <span className="block text-sm text-white">Cart({cartItems.length})</span>
                     <span className="block text-xs text-gray-200">
                       Add items
                     </span>
@@ -161,16 +162,18 @@ const TopNavbar = () => {
                   </div>
                 </div>
               </Link>
-
-              <div className="flex items-center space-x-2">
-                <FaUser className="text-2xl" />
-                <div  className="cursor-pointer">
-                  <span className="block text-sm text-white">Account</span>
-                  <span className="block text-xs text-gray-200">
-                    Register or Login
-                  </span>
-                </div>
+                <Link to='/login'>
+                <div    className="flex items-center space-x-2">
+              
+              <FaUser className="text-2xl" />
+              <div  className="cursor-pointer">
+                <span className="block text-sm text-white">Account</span>
+                <span className="block text-xs text-gray-200">
+                  Register or Login
+                </span>
               </div>
+            </div></Link>
+    
             </div>
 
             {/* Mobile (sm) Bottom Navigation Menu */}

@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+ 
 const Footer = () => {
   return (
     <footer className="mt-32 py-10">
@@ -44,16 +47,21 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-semibold text-white mb-3">Accessories</h4>
-            <ul className="space-y-1 text-white">
-              <li>Phone Cases</li>
-              <li>Screen Protectors</li>
-              <li>Headphone Cases</li>
-              <li>Chargers</li>
-              <li>Cables</li>
-            </ul>
-          </div>
+          <div className="flex flex-col">
+  <h4 className="font-semibold text-white mb-3">Our Company</h4>
+  <ul className="space-y-1 text-white">
+    <li>
+      <Link to="/termsandcondition" >Terms And Condition</Link>
+    </li>
+    <li>
+      <Link to="/aboutus"  >About</Link>
+    </li>
+    <li>
+      <Link to="/privacyandpolicy"  >Privacy and Policy</Link>
+    </li>
+  </ul>
+</div>
+
         </div>
 
         {/* Footer Bottom */}
