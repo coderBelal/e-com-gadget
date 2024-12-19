@@ -1,7 +1,8 @@
  
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {   FaGift, FaShoppingCart, FaEnvelope, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const PhoneNav = () => {
   const [showLogin, setShowLogin] =  useState(false);
@@ -11,7 +12,7 @@ const [showForgotPassword, setShowForgotPassword] = useState(false); // New stat
 const handleShowLogin = () => {
   setShowLogin(!showLogin);
 };
-
+ const {cartItems} = useContext(CartContext)
 const handleClose = () => {
   setShowLogin(false);
 };
@@ -49,7 +50,7 @@ const handleForgotPassword = () => {
               <div className="flex flex-col items-center space-x-2">
                 <FaShoppingCart className="text-xl" />
                 <div>
-                  <span className="block text-sm text-white">Cart(0)</span>
+                  <span className="block text-sm text-white">Cart({cartItems.length})</span>
           
                 </div>
               </div></Link>

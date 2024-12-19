@@ -8,7 +8,7 @@ const WhatsAppButton = () => {
     <div className="fixed bottom-16 lg:bottom-6 right-4 flex flex-col space-y-4">
  
     <a
-      href="https://wa.me/01568885065"
+      href="https://wa.me/01793481020"
       target="_blank"
       rel="noopener noreferrer"
       className="bg-green-500 text-white p-4 rounded-full shadow-lg 

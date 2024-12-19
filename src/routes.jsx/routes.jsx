@@ -44,6 +44,9 @@ import ProductManagment from "../components/pages/Dashboard/ProductManagment";
 
 import Compare from "../components/pages/Compare";
 import ErrorPage from "../components/pages/ErrorPage";
+import TermsAndCondition from "../components/pages/TermsAndCondition";
+import AboutUs from "../components/pages/AboutUs";
+import PrivacyAndPolicy from "../components/pages/PrivacyAndPolicy";
  
 
 export const router = createBrowserRouter([ 
@@ -130,6 +133,18 @@ export const router = createBrowserRouter([
             path: "/admin-login",
             element: <AdminLogin/>
         },
+        {
+            path:"/termsandcondition",
+            element:<TermsAndCondition/>
+        },
+        {
+            path:"/aboutus",
+            element:<AboutUs/>
+        },
+        {
+            path:"/privacyandpolicy",
+            element:<PrivacyAndPolicy/>
+        }
     ] 
     }, 
 

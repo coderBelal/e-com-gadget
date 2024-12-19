@@ -1,13 +1,153 @@
-import Product from "./Product"
-
- 
+import { useContext, useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { CartContext } from "./context/CartContext";
+import { useNotification } from "./context/NotificationContext";
+import { IoIosArrowForward } from "react-icons/io";
+import { TiShoppingCart } from "react-icons/ti";
+import CartSidebar from "./pages/CartSidebar";
 
 const ProductTwo = () => {
-  return (
-    <div>
-        <Product/>
-    </div>
-  )
-}
+  const companies = [
+    {
+      name: "Best Deal",
+      phones: [
+        {
+          id: 1,
+          title: "Phone A1",
+          description: "Description for Phone A1",
+          price: 300,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+        {
+          id: 2,
+          title: "Phone A2",
+          description: "Description for Phone A2",
+          price: 350,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+        {
+          id: 3,
+          title: "Phone A1",
+          description: "Description for Phone A1",
+          price: 300,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+        {
+          id: 4,
+          title: "Phone A2",
+          description: "Description for Phone A2",
+          price: 350,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+      ],
+    },
+    {
+      name: "Best seller",
+      phones: [
+        {
+          id: 3,
+          title: "Phone B1",
+          description: "Description for Phone B1",
+          price: 400,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+        {
+          id: 4,
+          title: "Phone B2",
+          description: "Description for Phone B2",
+          price: 450,
+          image: "https://i.postimg.cc/bYLdy6GT/i-Phone-15-Plus-2-1-6945.jpg",
+        },
+      ],
+    },
+ 
+ 
+ 
+  ];
+  
+  const { addToCart } = useContext(CartContext);
+  const { showNotification } = useNotification();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [selectedCompany, setSelectedCompany] = useState(companies[0]);
 
-export default ProductTwo
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    showNotification(`${product.title} has been added to your cart!`);
+    openCart();
+  };
+
+  return (
+    <div className="py-4 p-2 lg:p-0 md:p-0 mt-10 mx-auto max-w-7xl">
+      <div className="mb-4 text-center">
+        <h2 className="text-3xl uppercase font-bold gradient-text">
+     Featured Products
+        </h2>
+        <p className="text-gray-300 text-xs">
+          Check out our exclusive products available for you.
+        </p>
+      </div>
+
+      {/* Tab Section */}
+      <div className="mb-6 flex justify-center gap-4">
+        {companies.map((company) => (
+          <button
+            key={company.name}
+            className={`px-4 py-2 font-semibold rounded-lg shadow-md ${
+              selectedCompany.name === company.name
+                ? "   gradient-bg text-white"
+                : "bg-gray-200 text-black hover:bg-gray-300"
+            }`}
+            onClick={() => setSelectedCompany(company)}
+          >
+            {company.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Products Section */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        {selectedCompany.phones.map((product) => (
+          <div
+            key={product.id}
+            data-aos="fade-up"
+            className="group flex flex-col cursor-pointer items-center rounded-lg p-4 shadow-lg bg-[#0F1012] hover:shadow-2xl hover:bg-gray-800 transition-all duration-300"
+          >
+            <div className="relative">
+              <Link to={`/products/${product.id}`}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="object-cover w-full h-48 rounded-lg transition-transform duration-500 group-hover:scale-105"
+                />
+              </Link>
+              <div
+                onClick={() => handleAddToCart(product)}
+                className="absolute top-2 right-2 transition-transform duration-300 ease-in-out group-hover:scale-105 gradient-bg p-2 rounded-full shadow-md"
+              >
+                <FaShoppingCart className="text-white shadow-lg" size={20} />
+              </div>
+            </div>
+            <h2 className="mt-4 text-center text-lg font-bold gradient-text">
+              {product.title}
+            </h2>
+            <p className="text-sm text-[#AFB1B4] group-hover:text-white">
+              {product.description}
+            </p>
+            <div className="mt-4 flex gap-10 justify-between items-center">
+              <p className="font-semibold text-white">
+                ${product.price.toFixed(2)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <CartSidebar isOpen={isCartOpen} closeSidebar={closeCart} />
+    </div>
+  );
+};
+
+export default ProductTwo;

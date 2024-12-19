@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 
 const ShopByBrands = () => {
   const brands = [
-    { name: "Apple", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Samsung", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "OnePlus", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Xiaomi", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Google", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Spigen", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Acer", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Thunderbolt", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Dell", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "MSI", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Boat", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Titan", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
-    { name: "Pitaka", logo: "https://i.postimg.cc/cJ1Hp2Zw/Google-4283.png" },
+    { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+    { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" },
+    { name: "OnePlus", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/OnePlus_logo.svg" },
+    { name: "Xiaomi", logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" },
+    { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+    { name: "Spigen", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Spigen_logo.svg" },
+    { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Acer_2011.svg" },
+    { name: "Thunderbolt", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Thunderbolt_logo.svg" },
+    { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" },
+    { name: "MSI", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/MSI_Logo.svg" },
+    { name: "Boat", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Boat_logo.svg" },
+    { name: "Titan", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Titan_Logo.svg" },
+    { name: "Pitaka", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Pitaka_logo.svg" },
   ];
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8  mx-auto max-w-7xl">
-      <h2 className="text-center text-3xl font-bold gradient-text">Shop By Brands</h2>
+    <div className="py-8 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+      <h2 className="text-center mb-10 text-3xl font-bold gradient-text">Shop By Brands</h2>
 
       {/* Marquee Component */}
       <Marquee gradient={false} speed={50}>
@@ -38,8 +38,9 @@ const ShopByBrands = () => {
       </Marquee>
 
       <div className="text-center mt-6">
-        <Link to="/all-brand" >      <button className="text-white hover:underline text-lg">All Brands &gt;</button></Link>
-  
+        <Link to="/all-brand">
+          <button className="text-white hover:underline text-lg">All Brands &gt;</button>
+        </Link>
       </div>
     </div>
   );
