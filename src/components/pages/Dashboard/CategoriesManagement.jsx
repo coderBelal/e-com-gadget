@@ -48,12 +48,12 @@ const CategoriesManagement = () => {
     const handleCreateCategory = async () => {
         if (!categoryName.trim()) return alert("Category name cannot be empty!");
         const uploadedImageUrl = await uploadImage(); // Upload the image and get the URL
-        if (!uploadedImageUrl) return alert("Failed to upload image!");
+        // if (!uploadedImageUrl) return alert("Failed to upload image!");
 
         try {
             const response = await axios.post("https://gadgets-server.vercel.app/api/v4/category", {
                 name: categoryName,
-                photo: uploadedImageUrl,
+                photo: uploadedImageUrl?uploadedImageUrl:null,
             });
             setCategories([...categories, response.data]);
             setCategoryName("");
@@ -67,12 +67,12 @@ const CategoriesManagement = () => {
     const handleUpdateCategory = async () => {
         if (!editingCategory || !categoryName.trim()) return;
         const uploadedImageUrl = photo ? await uploadImage() : editingCategory.photo; // Only upload a new image if changed
-        if (photo && !uploadedImageUrl) return alert("Failed to upload image!");
+        // if (photo && !uploadedImageUrl) return alert("Failed to upload image!");
 
         try {
             const response = await axios.put(`https://gadgets-server.vercel.app/api/v4/category/${editingCategory._id}`, {
                 name: categoryName,
-                photo: uploadedImageUrl,
+                photo: uploadedImageUrl?uploadedImageUrl:null,
             });
             setCategories(categories.map((cat) => (cat._id === editingCategory._id ? response.data : cat)));
             setEditingCategory(null);
@@ -106,15 +106,15 @@ const CategoriesManagement = () => {
             <div className="mb-4 flex lg:flex-row flex-col lg:space-x-2 space-y-2">
                 <input
                     type="text"
-                    className="p-2 border border-gray-700 rounded bg-transparent text-gray-300 focus:outline-none focus:ring focus:ring-indigo-600 w-full"
+                    className="p-2 border border-gray-700 h-12 rounded bg-transparent text-gray-300 focus:outline-none focus:ring focus:ring-indigo-600 lg:w-[50%] w-full"
                     placeholder="Add a new category..."
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
                 />
-              <div className="relative">
+              <div className="relative lg:w-[50%] w-full ">
       <label
         htmlFor="file-input"
-        className="flex items-center justify-center w-full p-3 mb-4 bg-[#101623] border border-gray-700 rounded-lg cursor-pointer text-gray-300 hover:bg-gray-800 transition-all"
+        className="flex items-center justify-center p-3 mb-4 bg-[#101623] border border-gray-700 rounded-lg cursor-pointer text-gray-300 hover:bg-gray-800 transition-all"
       >
         <FiUpload className="w-5 h-5 mr-2" />
         Upload Image
@@ -134,7 +134,7 @@ const CategoriesManagement = () => {
     className="p-2 text-center font-semibold   bg-indigo-600 text-gray-200 rounded hover:bg-indigo-500 flex items-center justify-center"
     onClick={handleCreateCategory}
   >
-     Add Category
+    <FaPlus></FaPlus> Add Category
   </button>
 </div>
 

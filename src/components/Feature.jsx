@@ -25,7 +25,7 @@ const FeaturedCategories = () => {
   return (
     <div className="py-10 px-4 max-w-7xl mx-auto">
       {/* Heading */}
-      <h2 className="text-3xl font-bold gradient-text text-center mb-4">
+      <h2 className="lg:text-3xl text-lg font-bold gradient-text text-center lg:mb-4 mb-2">
         FEATURED CATEGORIES
       </h2>
       <p className="text-center mb-8 text-gray-300">

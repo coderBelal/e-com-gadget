@@ -161,7 +161,7 @@ const Product = () => {
   return (
     <div className="py-4 p-2 lg:p-0 md:p-0 mt-10 mx-auto max-w-7xl">
     <div className="mb-4 text-center">
-      <h2 className="text-3xl uppercase font-bold gradient-text">
+      <h2 className="lg:text-3xl text-lg uppercase font-bold gradient-text">
  Top Brands
       </h2>
       <p className="text-gray-300 text-xs">
@@ -173,13 +173,13 @@ const Product = () => {
     <div className="mb-6 flex justify-center">
       <Swiper
         spaceBetween={10} 
-        slidesPerView={2}  
+        slidesPerView={3}  
         breakpoints={{
           640: {
-            slidesPerView: 2,  
+            slidesPerView: 3,  
           },
           1024: {
-            slidesPerView: 5,  
+            slidesPerView: 6,  
           },
         }}
         className="  w-full"  
@@ -187,7 +187,7 @@ const Product = () => {
         {companies.map((company) => (
           <SwiperSlide key={company.name}>
             <button
-              className={`px-4 py-2 font-semibold rounded-lg shadow-md w-full ${
+              className={`px-3 lg:text-base text-sm py-2 font-semibold rounded-lg shadow-md w-full ${
                 selectedCompany.name === company.name
                   ? "gradient-bg text-white"
                   : "bg-gray-200 text-black hover:bg-gray-300"

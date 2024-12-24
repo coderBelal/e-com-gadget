@@ -322,9 +322,9 @@ const BrandManager = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#06080D] text-gray-50 p-6">
+    <div className="min-h-screen bg-[#06080D] text-gray-50 lg:p-4 p-2">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-6">Brand Manager</h1>
+        <h1 className="lg:text-2xl text-xl font-bold text-center lg:mb-6 mb-3">Brand Manager</h1>
 
         {/* Error and Loading */}
         {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -389,21 +389,21 @@ const BrandManager = () => {
         </div>
 
         {/* Brands List */}
-        <div className="bg-[#101623] p-6 rounded-lg shadow-md">
+        <div className="bg-[#101623] lg:p-4 p-2 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">Brands</h2>
           {brandsBySubcategory?.length === 0 ? (
             <p className="text-gray-400">No brands available.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {brandsBySubcategory?.map((brand) => (
                 <li
                   key={brand._id}
-                  className="flex justify-between items-center bg-gray-800 p-4 rounded-lg"
+                  className="flex justify-between lg:items-center items-start bg-gray-800 lg:p-3 p-2 rounded-lg"
                 >
                   <div>
                     <p>{brand.name}</p>
                   </div>
-                  <div className="space-x-4">
+                  <div className="space-x-3">
                     <button
                       onClick={() => {
                         setEditingBrand(brand);

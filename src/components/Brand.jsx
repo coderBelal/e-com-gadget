@@ -21,7 +21,7 @@ const ShopByBrands = () => {
 
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-      <h2 className="text-center mb-10 text-3xl font-bold gradient-text">Shop By Brands</h2>
+      <h2 className="text-center mb-10 lg:text-3xl text-lg font-bold gradient-text">Shop By Brands</h2>
 
       {/* Marquee Component */}
       <Marquee gradient={false} speed={50}>

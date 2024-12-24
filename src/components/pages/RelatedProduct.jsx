@@ -42,7 +42,7 @@ const RelatedProduct = () => {
         <FaChevronLeft size={20} className="text-gray-700" />
       </button>
       <div className="mb-4 text-center">
-        <h2 className="text-3xl uppercase font-bold gradient-text"> Related Products</h2>
+        <h2 className="lg:text-3xl text-lg uppercase font-bold gradient-text"> Related Products</h2>
  
       </div>
       <button

@@ -314,7 +314,7 @@ const ProductPage = () => {
       {/* Product Gallery */}
       <div className="col-span-9 mt-24">
         <div className="mb-4 text-center">
-          <h2 className="text-3xl uppercase font-bold gradient-text">
+          <h2 className="lg:text-3xl text-lg uppercase font-bold gradient-text">
             Featured Products
           </h2>
           <p className="text-gray-500 text-xs">

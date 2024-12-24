@@ -44,7 +44,7 @@ const SubcategoryManager = () => {
       console.log(response)
       setSubcategoriesById(response.data.data);
     } catch (err) {
-      setError("Error fetching subcategories");
+      setError("subcategories not found");
     } finally {
       setLoading(false);
     }
@@ -110,7 +110,7 @@ const SubcategoryManager = () => {
         {/* Category Selection */}
         <div className="bg-[#101623] p-6 rounded-lg shadow-md mb-6">
           <select
-            className="w-full p-3 mb-4 rounded-lg bg-[#101623] text-gray-50 border border-gray-700 focus:outline-none"
+            className="w-full p-2 mb-4 rounded-lg bg-[#101623] text-gray-50 border border border-gray-700 focus:outline-none"
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value)}
           >
@@ -132,7 +132,7 @@ const SubcategoryManager = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full p-3 mb-4 rounded-lg bg-[#101623] border-gray-700"
+                className="w-full p-2 mb-4 rounded-lg bg-[#101623] border border-gray-700"
               />
               <textarea
                 placeholder="Subcategory Description"
@@ -140,7 +140,7 @@ const SubcategoryManager = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
-                className="w-full p-3 mb-4 rounded-lg bg-[#101623] border-gray-700"
+                className="w-full p-2 mb-4 rounded-lg bg-[#101623] border border-gray-700"
               ></textarea>
 
               <button
@@ -164,11 +164,11 @@ const SubcategoryManager = () => {
           {subcategoriesById?.length === 0 ? (
             <p className="text-gray-400">No subcategories available.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {subcategoriesById?.map((sub) => (
                 <li
                   key={sub._id}
-                  className="flex justify-between items-center bg-gray-800 p-4 rounded-lg"
+                  className="flex justify-between items-center bg-gray-800 p-3 rounded-lg"
                 >
                   <div>
                     <p>{sub.name}</p>
@@ -176,19 +176,19 @@ const SubcategoryManager = () => {
                       <p className="text-gray-400">{sub.description}</p>
                     )}
                   </div>
-                  <div className="space-x-4">
+                  <div className="space-x-3">
                     <button
                       onClick={() => {
                         setEditingSubcategory(sub);
                         setFormData({ name: sub.name, description: sub.description });
                       }}
-                      className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white"
+                      className="px-3 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-white"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteSubcategory(sub._id)}
-                      className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white"
+                      className="px-3 py-1 bg-red-600 hover:bg-red-700 rounded-lg text-white"
                     >
                       Delete
                     </button>

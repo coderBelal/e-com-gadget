@@ -84,14 +84,14 @@ const TopNavbar = () => {
         <div className="mx-auto max-w-7xl">
           <nav className="text-white flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="   flex items-center gap-5  space-x-2">
+              <div className="   flex items-center justify-between gap-5  space-x-2">
                 <div className="text-xl   mt-4 lg:mt-0   font-bold">
                   <Link to="/">
                     {" "}
                     <h1 className="text-2xl p-1 ml-6 border border-purple-700">GadgetandTech</h1>
                   </Link>
                 </div>
-                <div className="  mt-4 lg:mt-0  ">
+                <div className="  mt-4 lg:mt-0 lg:ml-0 ml-10 ">
                   <FaSearch
                     onClick={toggleSearchBar}
                     className="text-2xl  lg:hidden cursor-pointer"
@@ -101,7 +101,7 @@ const TopNavbar = () => {
             </div>
 
             {showSearchBar && (
-              <div className="absolute lg:hidden top-28 left-0 w-full px-4 z-[100]">
+              <div className="absolute lg:hidden top-28 left-0 w-full px-4 z-[1000]">
                 <input
                   type="text"
                   placeholder="Search..."
